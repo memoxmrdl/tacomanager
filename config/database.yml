@@ -4,6 +4,7 @@ development:
   database: tacomanager_development
   pool: 5
   host: localhost
+  username: postgres
 
 test:
   adapter: postgresql
@@ -11,6 +12,7 @@ test:
   database: tacomanager_test
   pool: 5
   host: localhost
+  username: postgres
 
 production:
   adapter: postgresql
@@ -18,3 +20,4 @@ production:
   database: tacomanager_production
   pool: 5
   host: localhost
+  username: postgres
