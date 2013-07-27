@@ -1,0 +1,20 @@
+@mixin columns($size) {
+  width: grid-width($size);
+  overflow: hidden;
+  float: left;
+  margin-left: $gw-gutter;
+
+  &:last-child {
+    margin-left: 0;
+  }
+}
+
+@mixin degradado($size, $color1, $color2) {
+  //background: black url(images/cabecera_degradado.jpg) repeat-x;
+  //background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(white), to(black));
+  background: -webkit-linear-gradient($size, $color1, $color2);
+  background: -moz-linear-gradient($size, $color1, $color2);
+  background: -o-linear-background($size, $color1, $color2);
+  background: -ms-linear-background($size, $color1, $color2);
+  background: linear-background($size, $color1, $color2);
+}
