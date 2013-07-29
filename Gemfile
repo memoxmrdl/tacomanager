@@ -26,6 +26,12 @@ group :development do
   gem 'launchy'
 end
 
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-github'
+gem 'omniauth-twitter'
+
 gem 'jquery-rails'
 gem 'turbolinks'
 
