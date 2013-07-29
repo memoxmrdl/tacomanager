@@ -1,4 +1,5 @@
 Tacomanager::Application.routes.draw do
+  devise_for :users
   scope "(:locale)", locale: /en|es/ do
     resources :users
 
