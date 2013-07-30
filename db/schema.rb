@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130730042444) do
+ActiveRecord::Schema.define(version: 20130730214114) do
+
+  create_table "authorizations", force: true do |t|
+    t.string   "provider",   null: false
+    t.string   "uid",        null: false
+    t.string   "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "establishments", force: true do |t|
     t.string   "name",        null: false
@@ -33,11 +41,8 @@ ActiveRecord::Schema.define(version: 20130730042444) do
 
   add_index "foods", ["establishment_id"], name: "index_foods_on_establishment_id", using: :btree
 
-  create_table "identities", force: true do |t|
-    t.string   "provider",                   null: false
-    t.string   "uid",                        null: false
-    t.string   "username",                   null: false
-    t.string   "email"
+  create_table "users", force: true do |t|
+    t.string   "name",                       null: false
     t.boolean  "blocked",    default: false
     t.datetime "created_at"
     t.datetime "updated_at"
