@@ -1,4 +1,4 @@
-## TacoManager Projecti
+## TacoManager Project
 
 Taco Manager is a project test to demostrate my skills
 
