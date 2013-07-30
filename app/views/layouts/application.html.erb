@@ -8,21 +8,10 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<header>
-  <div class="container">
-    <div class="span3 logo">TacoManager</div>
-    <div class="span7 menu">
-      <ul>
-        <li>Inicio</li>
-        <li>Establecimientos</li>
-        <li>Menu</li>
-        <li>Pedidos</li>
-        <li>Ordenes</li>
-      </ul>
-    </div>
-  </div>
-</header>
+<%= display_login_link do %>
+  <h1>Welcome: <%= current_identity.try(:username) %>
+  <%= link_to 'Sign out', signout_path %>
+<% end %>
 <%= yield %>
-
 </body>
 </html>

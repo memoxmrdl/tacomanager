@@ -1,0 +1,7 @@
+<% if current_identity %>
+  Welcome <%= current_identity.name %>
+  <%= link_to 'Sign out', signout_path %>
+<% else %>
+  <%= link_to 'Sign in with Github', '/auth/github' %>
+  <%= link_to 'Sign in with Twitter', '/auth/twitter' %>
+<% end %>
