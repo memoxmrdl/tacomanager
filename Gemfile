@@ -26,25 +26,9 @@ group :development do
   gem 'launchy'
 end
 
-gem 'devise'
-gem 'omniauth'
-gem 'omniauth-facebook'
+gem 'warden', '~> 1.2.1'
 gem 'omniauth-github'
 gem 'omniauth-twitter'
 
 gem 'jquery-rails'
 gem 'turbolinks'
-
-#gem 'jbuilder', '~> 1.2'
-
-# Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]
