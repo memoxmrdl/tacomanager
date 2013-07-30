@@ -13,7 +13,7 @@ end
 
 Warden::Strategies.add(:omniauth_public) do
   def valid?
-    controller_name = request.env['action_dispatch.request.path_parameters']['controller']
+    controller_name = request.env['action_dispatch.request.parameters']['controller']
     controller_name == 'sessions'
   end
 
@@ -21,7 +21,8 @@ Warden::Strategies.add(:omniauth_public) do
     auth = request.env['omniauth.auth']
 
     identity = Identity.my_identity(auth['uid'], auth['provider']).last || Identity.create_with_omniauth(auth)
-    return fail! I18n.t('warden.strategies.unauthorized_identity') if identity.block?
+
+    return fail! I18n.t('warden.strategies.unauthorized_identity') if identity.blocked?
 
     success! identity
   end
