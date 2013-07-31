@@ -1,17 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Taco Manager</title>
+  <title>TacoManager</title>
   <%= stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Open+Sans:700italic,400,300', media: 'all' %>
   <%= stylesheet_link_tag    "application", media: 'all' %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<%= display_login_link do %>
-  <h1>Welcome: <%= current_identity.try(:username) %>
-  <%= link_to 'Sign out', signout_path %>
-<% end %>
-<%= yield %>
+<div class="background-bar">
+  <div class="container">
+    <div class="span12 flannel"></div>
+    <div class="span12">
+      <div class="span6 logo"></div>
+      <div class="span5 provider">
+        <h2><%= t('.sign_in') %></h2>
+          <div class="providers">
+            <%= link_to image_tag('github.png'), '/auth/github', class: 'github' %>
+            <%= link_to image_tag('twitter.png'), '/auth/twitter', class: 'twitter' %>
+          </div>
+      </div>
+    </div>
+    <div class="footer">Crowd Interactive 2013, This site is protected by copyrigth, Under U.S and international law. All rigths reserved.<div>
+  </div>
+</div>
 </body>
 </html>

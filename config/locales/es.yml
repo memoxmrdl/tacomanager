@@ -1,2 +1,4 @@
 es:
-  welcome: "Bienvenido"
+  layouts:
+    application:
+      sign_in: 'Inicia sesíon con:'
