@@ -1,9 +1,10 @@
 Tacomanager::Application.routes.draw do
-  get '/auth/:provider/callback' => 'sessions#create'
-  get '/signout' => 'sessions#destroy', as: :signout
+  get '/auth/:provider/callback' => 'sessions#create', as: 'login'
+  get '/logout' => 'sessions#destroy', as: 'logout'
 
   scope "(:locale)", locale: /en|es/ do
     namespace :dashboard do
+      get '/' => 'establishments#index'
       resources :establishments do
         resources :foods
         resources :comment, only: :create
