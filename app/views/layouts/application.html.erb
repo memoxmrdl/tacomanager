@@ -9,7 +9,7 @@
 </head>
 <body>
 <%= display_login_link do %>
-  <h1>Welcome: <%= current_identity.try(:username) %>
+  <h1>Welcome: <%= current_identity.user.try(:nickname) %>
   <%= link_to 'Sign out', signout_path %>
 <% end %>
 <%= yield %>

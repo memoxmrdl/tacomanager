@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 20130730214114) do
   create_table "authorizations", force: true do |t|
     t.string   "provider",   null: false
     t.string   "uid",        null: false
+    t.string   "email",      null: false
     t.string   "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -42,7 +43,7 @@ ActiveRecord::Schema.define(version: 20130730214114) do
   add_index "foods", ["establishment_id"], name: "index_foods_on_establishment_id", using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "name",                       null: false
+    t.string   "nickname",                   null: false
     t.boolean  "blocked",    default: false
     t.datetime "created_at"
     t.datetime "updated_at"

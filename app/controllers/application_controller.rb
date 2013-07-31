@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery with: :exception
 
-  helper_method :current_user, :signed_in?, :warden
+  helper_method :current_identity, :signed_in?, :warden
 
   private
 
@@ -17,12 +17,12 @@ class ApplicationController < ActionController::Base
     request.env['warden']
   end
 
-  def current_user
-    @current_user ||= warden.user(scope: :user)
+  def current_identity
+    warden.user(scope: :authorization)
   end
 
   def signed_in?
-    warden.authenticate?(scope: :user)
+    warden.authenticate?(scope: :authorization)
   end
 
   def authenticate!
