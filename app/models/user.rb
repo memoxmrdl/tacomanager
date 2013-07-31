@@ -3,7 +3,6 @@ class User < ActiveRecord::Base
 
   class << self
     def create_from_hash!(hash)
-      Rails.logger.debug "#{hash.inspect}"
       create(nickname: hash['info']['nickname'].to_s)
     end
   end
