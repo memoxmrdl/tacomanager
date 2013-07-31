@@ -5,10 +5,10 @@ Tacomanager::Application.routes.draw do
   scope "(:locale)", locale: /en|es/ do
     namespace :dashboard do
       resources :establishments do
-        resources :food
-        resources :comments, only: :create
+        resources :foods
+        resources :comment, only: :create
         resources :orders do
-          resources :comments, only: :create
+          resources :comment, only: :create
         end
       end
     end
