@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  layout :dashboard
+  layout :set_layout
   before_action :set_locale
 
   protect_from_forgery with: :exception
@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
     I18n.locale = params[:locale] || I18n.default_locale
   end
 
-  def dashboard
+  def set_layout
     signed_in? ? 'dashboard' : 'application'
   end
 
