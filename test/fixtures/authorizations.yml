@@ -4,13 +4,9 @@
 one:
   provider: MyString
   uid: MyString
-  username: MyString
-  email: MyString
-  blocked: false
+  user_id: MyString
 
 two:
   provider: MyString
   uid: MyString
-  username: MyString
-  email: MyString
-  blocked: false
+  user_id: MyString

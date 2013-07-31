@@ -5,7 +5,7 @@
 
 body {
   font-family: 'Open sans', sans-serif;
-  background-color: #f6f6f6;
+  background: image-url('background.jpg') repeat;
   margin: 0;
   overflow: hidden;
 }
@@ -32,6 +32,44 @@ body {
     overflow: hidden;
   }
 }
+
+.background-bar {
+  width: 100%;
+  height: 440px;
+  background-color: #eee;
+  margin-top: 50px;
+}
+
+.flannel {
+  background: image-url('flannel.png') no-repeat;
+  margin: 0 auto;
+  width: 978px;
+  height: 362px;
+  margin-top: -90px;
+  position: absolute;
+}
+
+.logo {
+  background: image-url('logo.png') no-repeat;
+  margin-top: 80px;
+  width: 498px;
+  height: 364px;
+}
+
+.provider {
+  margin-top: 180px;
+
+  .providers {
+    margin-left: $margin;
+  }
+}
+
+.footer {
+  color: #AD4D17;
+  margin-left: ($margin * 8);
+  font-size: .7em;
+  font-style: italic;
+} 
 
 header {
   height: 75px;

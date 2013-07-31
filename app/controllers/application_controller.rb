@@ -1,14 +1,18 @@
 class ApplicationController < ActionController::Base
+  layout :dashboard
   before_action :set_locale
 
   protect_from_forgery with: :exception
-
-  helper_method :current_identity, :identity_signed_in?, :warden
+  helper_method :current_identity, :signed_in?, :warden
 
   private
 
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
+  end
+
+  def dashboard
+    signed_in? ? 'dashboard' : 'application'
   end
 
   protected
@@ -18,14 +22,14 @@ class ApplicationController < ActionController::Base
   end
 
   def current_identity
-    warden.user(scope: :identity)
+    warden.user(scope: :authorization)
   end
 
-  def identity_signed_in?
-    warden.authenticate?(scope: :identity)
+  def signed_in?
+    warden.authenticate?(scope: :authorization)
   end
 
   def authenticate!
-    redirect_to root_path, notice: 'hubo problemas' unless identity_signed_in?
+    redirect_to root_path, notice: 'hubo problemas' unless signed_in?
   end
 end

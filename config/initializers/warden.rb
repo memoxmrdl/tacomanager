@@ -3,26 +3,27 @@ Rails.application.config.middleware.use Warden::Manager do |manager|
   manager.failure_app = lambda { |env| HomeController.action(:index).call(env) }
 end
 
-Warden::Manager.serialize_into_session(:identity) do |identity|
-  identity.id
+Warden::Manager.serialize_into_session(:authorization) do |authorization|
+  authorization.id
 end
 
-Warden::Manager.serialize_from_session(:identity) do |id|
-  Identity.find(id)
+Warden::Manager.serialize_from_session(:authorization) do |id|
+  Authorization.find(id)
 end
 
 Warden::Strategies.add(:omniauth_public) do
   def valid?
-    controller_name = request.env['action_dispatch.request.path_parameters']['controller']
+    controller_name = request.env['action_dispatch.request.parameters']['controller']
     controller_name == 'sessions'
   end
 
   def authenticate!
     auth = request.env['omniauth.auth']
 
-    identity = Identity.my_identity(auth['uid'], auth['provider']).last || Identity.create_with_omniauth(auth)
-    return fail! I18n.t('warden.strategies.unauthorized_identity') if identity.block?
+    @auth = Authorization.find_from_hash(auth) || Authorization.create_from_hash(auth) 
 
-    success! identity
+    return fail! I18n.t('warden.strategies.unauthorized_identity') if @auth.user.blocked?
+
+    success! @auth
   end
 end
