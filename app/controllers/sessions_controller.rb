@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
   def create
     warden.authenticate!(scope: :authorization)
-    redirect_to dashboard_establishments_path
+    redirect_to dashboard_root_path
   end
 
   def destroy

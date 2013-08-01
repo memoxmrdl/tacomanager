@@ -1,6 +1,4 @@
-class Dashboard::EstablishmentsController < ApplicationController
-  before_action :authenticate!
-
+class Dashboard::EstablishmentsController < DashboardController
   def index
   end
 end
