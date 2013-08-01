@@ -8,18 +8,19 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class="background-bar">
-  <div class="container">
-    <div class="span12 flannel"></div>
-    <div class="span12">
-      <div class="span6 logo"></div>
-      <div class="span5 provider">
+<div class="bar">
+  <div class="container <%= controller.controller_name %>">
+    <div class="span12 flannel">
+      <div class="provider">
         <h2><%= t('.sign_in') %></h2>
           <div class="providers">
             <%= link_to image_tag('github.png'), '/auth/github', class: 'github' %>
             <%= link_to image_tag('twitter.png'), '/auth/twitter', class: 'twitter' %>
           </div>
       </div>
+    </div>
+    <div class="span12">
+      <div class="span6 logo"></div>
     </div>
     <div class="footer">Crowd Interactive 2013, This site is protected by copyrigth, Under U.S and international law. All rigths reserved.<div>
   </div>
