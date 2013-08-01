@@ -4,13 +4,15 @@ Tacomanager::Application.routes.draw do
 
   scope "(:locale)", locale: /en|es/ do
     namespace :dashboard do
-      get '/' => 'establishments#index'
+      root :to => 'dashboard#index'
+
       resources :establishments do
         resources :foods
         resources :comment, only: :create
-        resources :orders do
-          resources :comment, only: :create
-        end
+      end
+
+      resources :orders do
+        resources :comment, only: :create
       end
     end
 
