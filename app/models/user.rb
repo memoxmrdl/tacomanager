@@ -3,11 +3,15 @@ class User < ActiveRecord::Base
   has_many :establishments
   has_one :image
 
+  validates_presence_of :nickname, :email
   validates_uniqueness_of :email
 
   class << self
     def create_from_hash!(hash)
-      create(nickname: hash['info']['nickname'], email: hash['info']['email'])
+      create! do |user|
+        user.nickname = hash['info']['nickname']
+        user.email = hash['info']['email']
+      end
     end
   end
 end
