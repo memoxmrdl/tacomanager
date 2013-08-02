@@ -3,6 +3,7 @@ class CreateComments < ActiveRecord::Migration
     create_table :comments do |t|
       t.integer :establishment_id
       t.text :comment
+      t.references :establishment, index: true
 
       t.timestamps
     end
