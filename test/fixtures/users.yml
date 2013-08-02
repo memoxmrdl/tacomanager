@@ -1,8 +1,13 @@
 # Read about fixtures at
 # http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  name: MyString
+user:
+  id: 100
+  nickname: 'testone'
+  email: 'test1@tacomanaer.com'
 
-two:
-  name: MyString
+user_admin:
+  id: 101
+  nickname: 'testtwo'
+  email: 'admin@tacomanaer.com'
+  admin: true
