@@ -1,10 +1,10 @@
 class Establishment < ActiveRecord::Base
-  t.integer :user_id
-  t.string :name
-  t.string :information
-  t.string :telephone
-  t.string :addres
-  t.references :establishment, index: true
+  belongs_to :user
+  has_many :foods
+  has_many :comments
+  has_many :images
 
-  t.timestamps
+  accepts_nested_attributes_for :images, allow_destroy: true
+
+  validates_uniqueness_of :name
 end

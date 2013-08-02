@@ -4,6 +4,7 @@ class CreateAuthorizations < ActiveRecord::Migration
       t.string :provider, null: false
       t.string :uid, null: false
       t.string :user_id
+      t.references :user, index: true
 
       t.timestamps
     end

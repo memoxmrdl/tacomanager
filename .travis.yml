@@ -1,0 +1,10 @@
+language: ruby
+rvm:
+  - 2.0.0
+
+bundler_args: --without development
+
+before_script:
+  - psql -c 'create database tacomanager_test;' -U postgres
+  - bundle install
+  - RAILS_ENV=test bundle exec rake app:db:create app:db:migrate

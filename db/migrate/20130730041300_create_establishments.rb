@@ -6,6 +6,7 @@ class CreateEstablishments < ActiveRecord::Migration
       t.string :address, null: false
       t.string :description
       t.integer :user_id
+      t.references :user, index: true
 
       t.timestamps
     end

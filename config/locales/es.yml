@@ -2,3 +2,8 @@ es:
   layouts:
     application:
       sign_in: 'Inicia sesíon con:'
+
+  activerecord:
+    errors:
+      messages:
+        record_invalid: 'Registro invalido'
