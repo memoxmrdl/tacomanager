@@ -100,6 +100,7 @@ ActiveRecord::Schema.define(version: 20130802152652) do
   create_table "users", force: true do |t|
     t.string   "nickname",                   null: false
     t.string   "email",                      null: false
+    t.boolean  "admin",      default: false
     t.boolean  "blocked",    default: false
     t.datetime "created_at"
     t.datetime "updated_at"
