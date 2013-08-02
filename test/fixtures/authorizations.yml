@@ -1,12 +1,14 @@
 # Read about fixtures at
 # http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  provider: MyString
-  uid: MyString
-  user_id: MyString
+user:
+  id: 200
+  user_id: 100
+  uid: '1234556'
+  provider: 'github'
 
-two:
-  provider: MyString
-  uid: MyString
-  user_id: MyString
+user_admin:
+  id: 201
+  user_id: 101
+  uid: '1234557'
+  provider: 'github'
