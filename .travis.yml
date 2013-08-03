@@ -5,7 +5,7 @@ rvm:
 bundler_args: --without development
 
 before_script:
-  - cp config/database.yml.tmp config/database.yml
+  - cp config/database.travis.yml config/database.yml
   - psql -c 'create database tacomanager_test;' -U postgres
   - bundle install
   - RAILS_ENV=test bundle exec rake db:create db:migrate
