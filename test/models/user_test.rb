@@ -21,7 +21,7 @@ describe User do
       user.errors[:email].wont_be_nil
     end
 
-    it 'must be invalid without unique email' do
+    it 'must be invalid with a email unique' do
       User.create nickname: 'test user', email: 'test@tacomanager.com'
 
       user.nickname = 'user test 2'
