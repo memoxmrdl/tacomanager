@@ -1,8 +1,10 @@
 class User < ActiveRecord::Base
   has_many :authorizations
   has_many :establishments
-  has_many :orders
   has_one :image
+
+  has_many :orderusers
+  has_many :orders, through: :orderusers
 
   validates_presence_of :nickname, :email
   validates_uniqueness_of :email
