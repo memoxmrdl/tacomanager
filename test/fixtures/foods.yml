@@ -1,2 +1,14 @@
 # Read about fixtures at
 # http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  id: 100
+  name: 'Taco de asada'
+  description: 'Taco de asada bien rico'
+  price: 12.00
+
+two:
+  id: 101
+  name: 'Comida especial'
+  description: 'Variedad de comidas'
+  price: 100.00
