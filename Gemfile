@@ -18,7 +18,7 @@ group :development do
   gem 'better_errors'
 end
 
-group :test do
+group :test, :development do
   gem 'minitest-rails'
   gem 'minitest-focus'
   gem 'minitest-colorize'
