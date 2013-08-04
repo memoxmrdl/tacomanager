@@ -11,10 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130802152652) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 20130804050404) do
 
   create_table "authorizations", force: true do |t|
     t.string   "provider",   null: false
@@ -50,7 +47,7 @@ ActiveRecord::Schema.define(version: 20130802152652) do
   create_table "foods", force: true do |t|
     t.integer  "establishment_id"
     t.string   "name",             null: false
-    t.text     "description",      null: false
+    t.text     "description"
     t.float    "price",            null: false
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -85,11 +82,25 @@ ActiveRecord::Schema.define(version: 20130802152652) do
   add_index "orderfoods", ["order_id"], name: "index_orderfoods_on_order_id", using: :btree
 
   create_table "orders", force: true do |t|
+    t.string   "name",         null: false
     t.integer  "orderfood_id"
-    t.string   "name"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "orders", ["orderfood_id"], name: "index_orders_on_orderfood_id", using: :btree
+  add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
+
+  create_table "orderusers", force: true do |t|
+    t.integer  "order_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "orderusers", ["order_id"], name: "index_orderusers_on_order_id", using: :btree
+  add_index "orderusers", ["user_id"], name: "index_orderusers_on_user_id", using: :btree
 
   create_table "scores", force: true do |t|
     t.integer  "score"
