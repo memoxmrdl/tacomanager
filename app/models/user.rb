@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :authorizations
   has_many :establishments
+  has_many :orders
   has_one :image
 
   validates_presence_of :nickname, :email

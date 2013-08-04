@@ -1,14 +1,14 @@
 # Read about fixtures at
 # http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-establishment1:
+one:
   id: 100
   name: 'Don bigotes'
   telephones: '312454564'
   address: 'San pancho de allende'
   user_id: 100
 
-establishment2:
+dos:
   id: 101
   name: 'Don bigotes'
   telephones: '312454564'
