@@ -18,7 +18,6 @@ describe Establishment do
       establishment.valid?.must_equal false
 
       establishment.errors.size.must_equal 3
-
       establishment.errors[:name].wont_be_nil
       establishment.errors[:user_id].wont_be_nil
       establishment.errors[:telephones].wont_be_nil

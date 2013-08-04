@@ -17,6 +17,7 @@ describe Food do
     it 'must be invalid  without attributes' do
       food.valid?.must_equal false
 
+      food.errors.size.must_equal 4
       food.errors[:name].wont_be_nil
       food.errors[:price].wont_be_nil
       food.errors[:establishment_id].wont_be_nil

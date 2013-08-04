@@ -2,7 +2,7 @@ require "test_helper"
 
 describe User do
   let(:user) { User.new }
-  let(:auth) { auth = { "provider" => 'github', "uid" => '3345444',
+  let(:auth) { { "provider" => 'github', "uid" => '3345444',
     "info" => { "nickname" => 'test_user', "email" => 'test@user.com' } } }
 
   describe 'Validations' do

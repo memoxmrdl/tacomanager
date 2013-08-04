@@ -13,6 +13,7 @@ describe Order do
     it 'must be invalid without attributes' do
       order.valid?.must_equal false
 
+      order.errors.size.must_equal 1
       order.errors[:name].wont_be_nil
     end
   end

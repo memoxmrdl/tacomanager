@@ -15,6 +15,8 @@ describe Comment do
     it 'must be invalid without attributes' do
       comment.valid?.must_equal false
 
+      comment.errors.size.must_equal 2
+      comment.errors[:comment].wont_be_nil
       comment.errors[:establishment_id].wont_be_nil
     end
   end
