@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20130802152652) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "authorizations", force: true do |t|
     t.string   "provider",   null: false
     t.string   "uid",        null: false
