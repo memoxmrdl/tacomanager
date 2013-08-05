@@ -7,7 +7,7 @@ class Establishment < ActiveRecord::Base
   has_many :images
 
   validates_uniqueness_of :name
-  validates_presence_of :user_id, :telephones, :address
+  validates_presence_of :name
 
   accepts_nested_attributes_for :images, allow_destroy: true
 end

@@ -1,6 +1,6 @@
 class OrderDetails < ActiveRecord::Base
   belongs_to :user
-  belogns_to :order
+  belongs_to :order
   belongs_to :menu_item
 
   validates_associated :menu_item

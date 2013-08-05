@@ -5,7 +5,7 @@ describe Order do
 
   describe 'Validations' do
     it 'must be valid' do
-      order.name = 'New test order'
+      order.name = 'New order'
 
       order.valid?.must_equal true
     end
