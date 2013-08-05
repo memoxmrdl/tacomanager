@@ -20,7 +20,7 @@ Warden::Strategies.add(:omniauth_public) do
   def authenticate!
     auth = request.env['omniauth.auth']
 
-    @auth = Authorization.find_from_hash(auth) || Authorization.create_from_hash(auth) 
+    @auth = Authorization.find_from_hash(auth).last || Authorization.create_from_hash(auth)
 
     return fail! I18n.t('warden.strategies.unauthorized_identity') if @auth.user.blocked?
 
