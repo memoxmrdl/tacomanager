@@ -1,3 +1,5 @@
+require 'acts_as_votable'
+
 class User < ActiveRecord::Base
   has_many :authorizations
   has_many :establishments
@@ -5,6 +7,8 @@ class User < ActiveRecord::Base
 
   has_many :orderusers
   has_many :orders, through: :orderusers
+
+  acts_as_voter
 
   validates_presence_of :nickname, :email
   validates_uniqueness_of :email
