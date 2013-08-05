@@ -6,6 +6,14 @@ gem 'rails', '4.0.0'
 gem 'pg'
 gem 'puma'
 
+gem 'paperclip', git: 'git://github.com/thoughtbot/paperclip.git', branch: 'rails-4'
+gem 'warden', '~> 1.2.1'
+gem 'omniauth-github'
+gem 'omniauth-twitter'
+gem 'jquery-rails'
+gem 'turbolinks'
+#gem 'strong_parameters'
+
 group :assets do
   gem 'sass-rails', '~> 4.0.0'
   gem 'coffee-rails', '~> 4.0.0'
@@ -18,7 +26,7 @@ group :development do
   gem 'better_errors'
 end
 
-group :test do
+group :test, :development do
   gem 'minitest-rails'
   gem 'minitest-focus'
   gem 'minitest-colorize'
@@ -26,10 +34,3 @@ group :test do
   gem 'minitest-rails-capybara'
   gem 'launchy'
 end
-
-gem 'paperclip', git: 'git://github.com/thoughtbot/paperclip.git', branch: 'rails-4'
-gem 'warden', '~> 1.2.1'
-gem 'omniauth-github'
-gem 'omniauth-twitter'
-gem 'jquery-rails'
-gem 'turbolinks'
