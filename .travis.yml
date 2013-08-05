@@ -8,4 +8,4 @@ before_script:
   - cp config/database.travis.yml config/database.yml
   - psql -c 'create database tacomanager_test;' -U postgres
   - bundle install
-  - RAILS_ENV=test bundle exec rake app:db:create app:db:migrate
+  - RAILS_ENV=test bundle exec rake db:create db:migrate
