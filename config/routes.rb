@@ -18,4 +18,8 @@ Tacomanager::Application.routes.draw do
 
     root :to => 'home#index'
   end
+
+  if Rails.env.test?
+    post '/sessions/create' => 'sessions#create'
+  end
 end
