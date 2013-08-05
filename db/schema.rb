@@ -102,12 +102,6 @@ ActiveRecord::Schema.define(version: 20130804050404) do
   add_index "orderusers", ["order_id"], name: "index_orderusers_on_order_id", using: :btree
   add_index "orderusers", ["user_id"], name: "index_orderusers_on_user_id", using: :btree
 
-  create_table "scores", force: true do |t|
-    t.integer  "score"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "users", force: true do |t|
     t.string   "nickname",                   null: false
     t.string   "email",                      null: false
