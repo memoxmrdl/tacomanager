@@ -1,9 +1,7 @@
 class Order < ActiveRecord::Base
-  has_many :orderfoods
-  has_many :foods, through: :orderfoods
+  belongs_to :user
+  belongs_to :establishment
 
-  has_many :orderusers
-  has_many :users, through: :orderusers
-
-  validates_presence_of :name
+  has_many :order_details
+  has_many :users, through: :order_details
 end

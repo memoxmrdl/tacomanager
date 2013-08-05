@@ -11,7 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130804050404) do
+ActiveRecord::Schema.define(version: 20130805165322) do
+
+  create_table "addresses", force: true do |t|
+    t.string   "street"
+    t.string   "city"
+    t.string   "state"
+    t.string   "country"
+    t.string   "zip_code"
+    t.integer  "establishment_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "addresses", ["establishment_id"], name: "index_addresses_on_establishment_id", using: :btree
 
   create_table "authorizations", force: true do |t|
     t.string   "provider",   null: false
@@ -33,22 +46,16 @@ ActiveRecord::Schema.define(version: 20130804050404) do
   add_index "comments", ["establishment_id"], name: "index_comments_on_establishment_id", using: :btree
 
   create_table "establishments", force: true do |t|
-    t.string   "name",        null: false
-    t.string   "telephones",  null: false
-    t.string   "address",     null: false
-    t.string   "description"
-    t.integer  "user_id"
+    t.string   "name",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "establishments", ["user_id"], name: "index_establishments_on_user_id", using: :btree
-
   create_table "foods", force: true do |t|
-    t.integer  "establishment_id"
     t.string   "name",             null: false
     t.text     "description"
     t.float    "price",            null: false
+    t.integer  "establishment_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -71,36 +78,30 @@ ActiveRecord::Schema.define(version: 20130804050404) do
   add_index "images", ["food_id"], name: "index_images_on_food_id", using: :btree
   add_index "images", ["user_id"], name: "index_images_on_user_id", using: :btree
 
-  create_table "orderfoods", force: true do |t|
+  create_table "order_details", force: true do |t|
+    t.integer  "quantity"
+    t.float    "subtotal"
     t.integer  "order_id"
-    t.integer  "food_id"
+    t.integer  "user_id"
+    t.integer  "menu_item_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "orderfoods", ["food_id"], name: "index_orderfoods_on_food_id", using: :btree
-  add_index "orderfoods", ["order_id"], name: "index_orderfoods_on_order_id", using: :btree
+  add_index "order_details", ["menu_item_id"], name: "index_order_details_on_menu_item_id", using: :btree
+  add_index "order_details", ["order_id"], name: "index_order_details_on_order_id", using: :btree
+  add_index "order_details", ["user_id"], name: "index_order_details_on_user_id", using: :btree
 
   create_table "orders", force: true do |t|
-    t.string   "name",         null: false
-    t.integer  "orderfood_id"
+    t.string   "name",             null: false
     t.integer  "user_id"
+    t.integer  "establishment_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "orders", ["orderfood_id"], name: "index_orders_on_orderfood_id", using: :btree
+  add_index "orders", ["establishment_id"], name: "index_orders_on_establishment_id", using: :btree
   add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
-
-  create_table "orderusers", force: true do |t|
-    t.integer  "order_id"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "orderusers", ["order_id"], name: "index_orderusers_on_order_id", using: :btree
-  add_index "orderusers", ["user_id"], name: "index_orderusers_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "nickname",                   null: false
