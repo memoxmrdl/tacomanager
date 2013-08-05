@@ -2,9 +2,9 @@
 # http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  id: 100
-  name: 'Don bigotes'
+  quantity: 1
+  subtotal: 1.5
 
-dos:
-  id: 101
-  name: 'Don bigotes'
+two:
+  quantity: 1
+  subtotal: 1.5
