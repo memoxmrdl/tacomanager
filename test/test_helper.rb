@@ -8,6 +8,12 @@ require 'minitest/focus'
 require 'minitest/colorize'
 require 'minitest/rails/capybara'
 
+module Minitest::Expectations
+  infect_an_assertion :assert_redirected_to, :must_redirect_to
+  infect_an_assertion :assert_template, :must_render_template
+  infect_an_assertion :assert_response, :must_response_with
+end
+
 class ActiveSupport::TestCase
   include Warden::Test::Helpers
 
