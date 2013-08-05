@@ -1,0 +1,10 @@
+# Read about fixtures at
+# http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  quantity: 1
+  subtotal: 1.5
+
+two:
+  quantity: 1
+  subtotal: 1.5
