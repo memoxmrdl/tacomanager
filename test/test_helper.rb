@@ -45,9 +45,9 @@ class ActiveSupport::TestCase
 
   alias_method :warden, :setup_warden
 
-  def log_in_user(id = 100)
-    identity = Identity.find id
-    warden.set_user identity, scope: :identity
+  def login_user(id = 200)
+    authorization = Authorization.find id
+    warden.set_user authorization, scope: :authorization
   end
 end
 
