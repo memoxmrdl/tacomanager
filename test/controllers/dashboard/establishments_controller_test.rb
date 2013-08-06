@@ -72,6 +72,8 @@ describe Dashboard::EstablishmentsController do
     end
 
     it 'should not created when params are invalid' do
+      login_user
+
       invalid_params = params.merge({ name: '' })
 
       post :create, establishment: invalid_params
@@ -126,10 +128,10 @@ describe Dashboard::EstablishmentsController do
       flash[:alert].wont_be_nil
     end
 
-    it 'should redirect when not exists' do
+    it 'should render edit when not exists' do
       login_user
 
-      put :update, id: establishment.id, establishment: { name: 'Other name' }
+      put :update, id: 200, establishment: { name: 'Other name' }
 
       must_response_with :success
       must_render_template :edit
