@@ -30,6 +30,6 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate!
-    redirect_to root_path, notice: 'hubo problemas' unless signed_in?
+    redirect_to root_path, alert: 'hubo problemas' unless signed_in?
   end
 end
