@@ -76,6 +76,25 @@ describe Dashboard::FoodsController do
 
       post :create, establishment_id: establishment.id, food: params
 
+      must_redirect_to dashboard_establishment_foods_path
+      flash[:notice].wont_be_nil
+    end
+
+    it 'should redirect with a message when not exists establishment' do
+      login_user
+
+      post :create, establishment_id: 300, food: params
+
+      must_redirect_to dashboard_establishment_foods_path
+      flash[:alert].wont_be_nil
+    end
+
+    it 'should render new when food params is incorrect' do
+      login_user
+
+      invalid_params = params.merge({ name:'', price: -1 })
+      post :create, establishment_id: establishment.id, food: invalid_params
+
       must_response_with :success
       must_render_template :new
     end
