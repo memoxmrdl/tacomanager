@@ -1,5 +1,5 @@
 class Dashboard::OrderDetailsController < DashboardController
-  before_filter :order_find
+  before_filter :order_find_by_id
   respond_to :js, only: [:create, :update, :destroy]
 
   def create
@@ -26,12 +26,13 @@ class Dashboard::OrderDetailsController < DashboardController
   end
 
   private
+
   def order_find_by_id
     @order = Order.find_by_id params[:order_id]
-    return redirect_to dashboard_orders_path if @order
+    return redirect_to dashboard_orders_path, alert: 'not_found' unless @order
   end
 
   def order_detail_params
-    params.require(:order_detail).permit(:food_id, :quantity)
+    params.require(:order_details).permit(:food_id, :quantity)
   end
 end
