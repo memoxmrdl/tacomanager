@@ -13,7 +13,7 @@ class Dashboard::EstablishmentsController < DashboardController
 
 
   def create
-    @establishment = Establishment.new establishment_params
+    @establishment = Establishment.new params_establishment
 
     return redirect_to dashboard_establishments_path, notice: 'created' if @establishment.save
 
@@ -30,10 +30,10 @@ class Dashboard::EstablishmentsController < DashboardController
   def update
     @establishment = Establishment.find_by_id params[:id]
 
-    if @establishment
-      @establishment.update_attributes establishment_params
-      return redirect_to dashboard_establishments_path, notice: 'updated'
-    end
+    updated = @establishment.update params_establishment if @establishment
+
+    message = redirect_message @establishment, updated, 'updated'
+    return redirect_to dashboard_establishments_path, message unless message.empty?
 
     flash.now[:alert] = 'error'
     render :edit
@@ -43,15 +43,16 @@ class Dashboard::EstablishmentsController < DashboardController
     return redirect_to dashboard_establishments_path, alert: 'permision deneged' unless current_identity.user.admin?
 
     @establishment = Establishment.find_by_id params[:id]
+    deleted = @establishment.destroy if @establishment
 
-    @establishment.destroy if @establishment
+    message = redirect_message @establishment, deleted, 'deleted'
 
-    redirect_to dashboard_establishments_path, notice: 'deleted'
+    redirect_to dashboard_establishments_path, message
   end
 
   private
 
-  def establishment_params
+  def params_establishment
     params.require(:establishment).permit(:name)
   end
 end

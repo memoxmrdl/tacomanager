@@ -133,9 +133,8 @@ describe Dashboard::EstablishmentsController do
 
       put :update, id: 200, establishment: { name: 'Other name' }
 
-      must_response_with :success
-      must_render_template :edit
-      flash.now[:alert].wont_be_nil
+      must_redirect_to dashboard_establishments_path
+      flash[:alert].wont_be_nil
     end
   end
 
