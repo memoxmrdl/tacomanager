@@ -2,9 +2,8 @@
 # http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
+  user_id: 100
+  order_id: 100
+  food_id: 100
   quantity: 1
-  subtotal: 1.5
-
-two:
-  quantity: 1
-  subtotal: 1.5
+  subtotal: 24.00
