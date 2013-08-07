@@ -12,7 +12,7 @@ Tacomanager::Application.routes.draw do
       end
 
       resources :orders do
-        resources :comment, only: :create
+        resources :orders_details, only: [:create, :update, :destroy]
       end
     end
 

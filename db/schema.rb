@@ -83,12 +83,12 @@ ActiveRecord::Schema.define(version: 20130805165322) do
     t.float    "subtotal"
     t.integer  "order_id"
     t.integer  "user_id"
-    t.integer  "menu_item_id"
+    t.integer  "food_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "order_details", ["menu_item_id"], name: "index_order_details_on_menu_item_id", using: :btree
+  add_index "order_details", ["food_id"], name: "index_order_details_on_food_id", using: :btree
   add_index "order_details", ["order_id"], name: "index_order_details_on_order_id", using: :btree
   add_index "order_details", ["user_id"], name: "index_order_details_on_user_id", using: :btree
 
