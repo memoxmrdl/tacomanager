@@ -1,10 +1,10 @@
 class Dashboard::FoodsController < DashboardController
   def index
-    @foods = Food.where establishment_id: params[:establishment_id]
+    @foods = Food.find_by_establishment_id params[:establishment_id]
   end
 
   def show
-    @food = Food.find_by_id_and_establishment_id(params[:id], params[:establishment_id])
+    @food = Food.find_by_id_and_establishment_id params[:id], params[:establishment_id] 
 
     return redirect_to dashboard_establishment_foods_path, alert: 'not found' unless @food
   end
@@ -14,7 +14,7 @@ class Dashboard::FoodsController < DashboardController
   end
 
   def create
-    @establishment = Establishment.find_by_id(params[:establishment_id])
+    @establishment = Establishment.find_by_id params[:establishment_id]
 
     return redirect_to dashboard_establishment_foods_path, alert: 'not exists' unless @establishment
 
@@ -28,13 +28,13 @@ class Dashboard::FoodsController < DashboardController
   end
 
   def edit
-    @food = Food.find_by_id_and_establishment_id(params[:id], params[:establishment_id])
+    @food = Food.find_by_id_and_establishment_id params[:id], params[:establishment_id]
 
     return redirect_to dashboard_establishment_foods_path, alert: 'not found' unless @food
   end
 
   def update
-    @food = Food.find_by_id_and_establishment_id(params[:id], params[:establishment_id])
+    @food = Food.find_by_id_and_establishment_id params[:id], params[:establishment_id]
 
     if @food.update_attributes params_food
       return redirect_to dashboard_establishment_foods_path, notice: 'updated'
@@ -45,7 +45,7 @@ class Dashboard::FoodsController < DashboardController
   end
 
   def destroy
-    @food = Food.find_by_id_and_establishment_id(params[:id], params[:establishment_id])
+    @food = Food.find_by_id_and_establishment_id params[:id], params[:establishment_id]
 
     @food.destroy if @food
 
@@ -55,6 +55,6 @@ class Dashboard::FoodsController < DashboardController
   private
 
   def params_food
-    params.require(:food).permit(:name, :price, :description)
+    params.require(:food).permit :name, :price, :description
   end
 end

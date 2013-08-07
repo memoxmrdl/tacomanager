@@ -14,7 +14,7 @@ class Dashboard::OrdersController < DashboardController
   end
 
   def create
-    @order = Order.new order_params
+    @order = Order.new params_order
     @order.user = current_identity.user
 
     return redirect_to dashboard_order_path(id: @order.id), notice: 'created' if @order.save
@@ -29,28 +29,14 @@ class Dashboard::OrdersController < DashboardController
   end
 
   def update
-    @order = Order.find_by_id params[:id]
-
-    updated = @order.update order_params if @order
-
-    message = redirect_message @order, updated, 'updated'
-    return redirect_to dashboard_orders_path, message unless message.empty?
-
-    render :edit
   end
 
   def destroy
-    @order = Order.find_by_id params[:id]
-
-    deleted = @order.destroy if @order
-    message = redirect_message @order, deleted, 'deleted'
-
-    redirect_to dashboard_orders_path, message
   end
 
   private
 
-  def order_params
+  def params_order
     params.require(:order).permit(:name, :establishment_id)
   end
 end
