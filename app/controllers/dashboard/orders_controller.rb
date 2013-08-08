@@ -1,4 +1,6 @@
 class Dashboard::OrdersController < DashboardController
+  before_filter :order_find_by_id, except: [:index, :new, :create]
+
   def index
     @orders = Order.find_by_user_id current_identity.user.id
   end
@@ -8,8 +10,6 @@ class Dashboard::OrdersController < DashboardController
   end
 
   def show
-    @order = Order.find_by_id params[:id]
-
     return redirect_to dashboard_orders_path, alert: 'not found' unless @order
   end
 
@@ -23,14 +23,10 @@ class Dashboard::OrdersController < DashboardController
   end
 
   def edit
-    @order = Order.find_by_id params[:id]
-
     redirect_to dashboard_orders_path, alert: 'not found' unless @order
   end
 
   def update
-    @order = Order.find_by_id params[:id]
-
     updated = @order.update order_params if @order
 
     message = redirect_message @order, updated, 'updated'
@@ -40,8 +36,6 @@ class Dashboard::OrdersController < DashboardController
   end
 
   def destroy
-    @order = Order.find_by_id params[:id]
-
     deleted = @order.destroy if @order
     message = redirect_message @order, deleted, 'deleted'
 
@@ -49,6 +43,10 @@ class Dashboard::OrdersController < DashboardController
   end
 
   private
+
+  def order_find_by_id
+    @order = Order.find_by_id params[:id]
+  end
 
   def order_params
     params.require(:order).permit(:name, :establishment_id)
