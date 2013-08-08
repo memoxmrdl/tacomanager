@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130808194710) do
+ActiveRecord::Schema.define(version: 20130808200949) do
 
   create_table "addresses", force: true do |t|
     t.string   "street"
@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 20130808194710) do
     t.integer  "establishment_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   add_index "addresses", ["establishment_id"], name: "index_addresses_on_establishment_id", using: :btree
