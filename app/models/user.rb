@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   validates_presence_of :nickname, :email
   validates_uniqueness_of :email
 
+  acts_as_voter
+
   class << self
     def create_from_hash!(hash)
       create! do |user|

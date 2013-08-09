@@ -12,7 +12,9 @@ gem 'omniauth-github'
 gem 'omniauth-twitter'
 gem 'jquery-rails'
 gem 'turbolinks'
-#gem 'strong_parameters'
+gem 'acts_as_votable', '~> 0.6.0'
+gem 'geocoder'
+gem 'gravatar_image_tag'
 
 group :assets do
   gem 'sass-rails', '~> 4.0.0'
