@@ -1,11 +1,11 @@
 class Dashboard::FoodsController < DashboardController
+  before_filter :food_find_by_id_and_establishment_id, except: [:index, :create]
+
   def index
     @foods = Food.find_by_establishment_id params[:establishment_id]
   end
 
   def show
-    @food = Food.find_by_id_and_establishment_id params[:id], params[:establishment_id] 
-
     return redirect_to dashboard_establishment_foods_path, alert: 'not found' unless @food
   end
 
@@ -28,14 +28,10 @@ class Dashboard::FoodsController < DashboardController
   end
 
   def edit
-    @food = Food.find_by_id_and_establishment_id params[:id], params[:establishment_id]
-
     return redirect_to dashboard_establishment_foods_path, alert: 'not found' unless @food
   end
 
   def update
-    @food = Food.find_by_id_and_establishment_id params[:id], params[:establishment_id]
-
     if @food.update_attributes params_food
       return redirect_to dashboard_establishment_foods_path, notice: 'updated'
     end
@@ -45,14 +41,16 @@ class Dashboard::FoodsController < DashboardController
   end
 
   def destroy
-    @food = Food.find_by_id_and_establishment_id params[:id], params[:establishment_id]
-
     @food.destroy if @food
 
     redirect_to dashboard_establishment_foods_path, notice: 'deleted'
   end
 
   private
+
+  def food_find_by_id_and_establishment_id
+    @food = Food.find_by_id_and_establishment_id params[:id], params[:establishment_id]
+  end
 
   def params_food
     params.require(:food).permit :name, :price, :description

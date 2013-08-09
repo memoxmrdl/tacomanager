@@ -1,4 +1,5 @@
 class Dashboard::EstablishmentsController < DashboardController
+  before_filter :establishment_find_by_id, only: [:show, :edit, :update]
   def index
     @establishments = Establishment.all
   end
@@ -8,7 +9,6 @@ class Dashboard::EstablishmentsController < DashboardController
   end
 
   def show
-    @establishment = Establishment.find_by_id params[:id]
   end
 
 
@@ -22,14 +22,10 @@ class Dashboard::EstablishmentsController < DashboardController
   end
 
   def edit
-    @establishment = Establishment.find_by_id params[:id]
-
     return redirect_to dashboard_establishments_path, alert: 'not found' unless @establishment
   end
 
   def update
-    @establishment = Establishment.find_by_id params[:id]
-
     updated = @establishment.update params_establishment if @establishment
 
     message = redirect_message @establishment, updated, 'updated'
@@ -51,6 +47,10 @@ class Dashboard::EstablishmentsController < DashboardController
   end
 
   private
+
+  def establishment_find_by_id
+    @establishment = Establishment.find_by_id params[:id]
+  end
 
   def params_establishment
     params.require(:establishment).permit(:name)

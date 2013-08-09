@@ -6,6 +6,8 @@ class Establishment < ActiveRecord::Base
   has_many :comments
   has_many :images
 
+  acts_as_votable
+
   validates_uniqueness_of :name
   validates_presence_of :name
 
