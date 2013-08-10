@@ -1,3 +1,46 @@
-// Place all the styles related to the establishments controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.establishments {
+  .title {
+    margin-bottom: $margin;
+  }
+
+  .content {
+    h3 {
+      float: left;
+      margin: 0;
+      font-size: 1.5em;
+    }
+
+    a {
+      float: right;
+      margin-right: $margin;
+    }
+  }
+
+  #establishments {
+    height: 340px;
+    overflow-y: scroll;
+    border-radius: 5px;
+    background-color: #fff;
+    padding: 20px;
+  }
+
+  .establishment {
+    float: left;
+    width: 204px;
+    height: 100px;
+    background-color: #eee;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+
+    h4 {
+      font-weight: 300;
+      margin: 10px;
+      float: left;
+
+      a {
+        text-decoration: none;
+      }
+    }
+  }
+}

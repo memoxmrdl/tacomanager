@@ -40,3 +40,88 @@ body {
   margin-top: 50px;
 }
 
+form {
+  .field {
+    margin-bottom: 10px;
+
+    label {
+      font-size: .9em;
+      width: 100px;
+      display: inline-block;
+
+      &:after {
+        content: ':';
+      }
+    }
+  }
+
+  .field_with_errors {
+    margin: 0;
+    display: inline-block;
+    float: left;
+
+    input, textarea { 
+      margin-right: ($margin/2);
+      border: 1px solid #000 !important; 
+    }
+  }
+
+  input[type="text"] {
+    border-radius: 3px;
+    border: 1px solid #eee;
+    width: 200px;
+    height: 25px;
+    padding: 5px 4px;
+  }
+
+  .error-help {
+    font-size: .3em;
+    color: #000;
+    padding-left: 5px;
+    display: inline-block;
+    font-size: 80%;
+  }
+
+  .submit {
+    margin-top: $margin;
+    margin-left: 99px;
+    float: left;
+
+    a {
+      float: left;
+      margin-right: 10px !important;
+      @include button(simple, #ff0000);
+    }
+
+    input[type="submit"] {
+      float: right;
+      @include button;
+    }
+  }
+}
+
+.notice {
+  margin-bottom: $margin;
+  background-color: #f3c343;
+  padding: 5px 10px;
+  color: #fff;
+  font-weight: bold;
+  font-size: .9em;
+  border-radius: 3px;
+  width: 612px;
+}
+
+.alert {
+  background-color: #eb0e21;
+  padding: 5px 10px;
+  color: #fff;
+  font-weight: bold;
+  font-size: .9em;
+  border-radius: 3px;
+  width: 612px;
+}
+
+.button {
+  @include button(simple, #f39b39);
+  font-size: .8em;
+}
