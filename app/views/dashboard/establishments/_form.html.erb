@@ -1,0 +1,38 @@
+<%= form_for establishment, url: { action: :create } do |f| %>
+  <div class="field">
+  <%= f.label tr :name %>
+  <%= f.text_field :name %>
+  <%= field_error establishment, :name %>
+</div>
+<%= f.fields_for :address do |a| %>
+  <div class="field">
+  <%= a.label tr :street %>
+  <%= a.text_field :street %>
+  <%= field_error address, :street %>
+</div>
+<div class="field">
+  <%= a.label tr :city %>
+  <%= a.text_field :city %>
+  <%= field_error address, :city %>
+</div>
+<div class="field">
+  <%= a.label tr :state %>
+  <%= a.text_field :state %>
+  <%= field_error address, :state %>
+</div>
+<div class="field">
+  <%= a.label tr :country %>
+  <%= a.text_field :country %>
+  <%= field_error address, :country %>
+</div>
+<div class="field">
+  <%= a.label tr :zip_code %>
+  <%= a.text_field :zip_code %>
+  <%= field_error address, :zip_code %>
+</div>
+      <% end %>
+<div class="submit">
+  <%= f.submit submit  %>
+  <%= link_to t('.cancel'), dashboard_establishments_path %>
+</div>
+<% end %>

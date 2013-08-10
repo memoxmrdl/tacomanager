@@ -3,6 +3,25 @@ es:
     application:
       sign_in: 'Inicia sesíon con:'
 
+
+  dashboard:
+    establishments:
+      new:
+        new: 'Nuevo establecimiento'
+        save: 'Guardar'
+      form:
+        name: 'Nombre'
+        street: 'Calle'
+        city: 'Ciudad'
+        state: 'Estado'
+        country: 'Pais'
+        zip_code: 'Codigo postal'
+        cancel: 'Cancelar'
+      create:
+        created: 'Establecimiento creado'
+      index: 
+        establishments: 'Establecimientos'
+
   activerecord:
     errors:
       messages:

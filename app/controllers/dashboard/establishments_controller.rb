@@ -1,21 +1,27 @@
 class Dashboard::EstablishmentsController < DashboardController
   before_filter :establishment_find_by_id, only: [:show, :edit, :update]
+
   def index
     @establishments = Establishment.all
   end
 
   def new
     @establishment = Establishment.new
+    @address = Address.new
   end
 
   def show
   end
 
-
   def create
+    address = Address.new params_address
     @establishment = Establishment.new params_establishment
 
-    return redirect_to dashboard_establishments_path, notice: 'created' if @establishment.save
+    if @establishment.save
+      @establishment.address << address
+      address.save
+      return redirect_to dashboard_establishments_path, notice: t('.created')
+    end
 
     flash.now[:alert] = 'error'
     render :new
@@ -50,6 +56,10 @@ class Dashboard::EstablishmentsController < DashboardController
 
   def establishment_find_by_id
     @establishment = Establishment.find_by_id params[:id]
+  end
+
+  def params_address
+    params.require(:establishment).require(:address).permit(:street, :city, :state, :country, :zip_code)
   end
 
   def params_establishment

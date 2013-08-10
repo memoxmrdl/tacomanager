@@ -72,4 +72,10 @@ class Capybara::Rails::TestCase
       }
     )
   end
+
+  def login_user
+    visit '/'
+
+    find('.github').click
+  end
 end

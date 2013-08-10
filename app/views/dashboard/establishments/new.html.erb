@@ -1,0 +1,8 @@
+<div class="content">
+  <div class="content">
+    <h3><%= t('.new') %></h3>
+  </div>
+  <div class="span5">
+    <%= render partial: 'form', locals: { establishment: @establishment, address: @address , submit: t('.save') } %>
+  </div>
+</div>
