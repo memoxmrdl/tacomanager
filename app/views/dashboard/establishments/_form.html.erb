@@ -4,31 +4,36 @@
   <%= f.text_field :name %>
   <%= field_error establishment, :name %>
 </div>
+  <div class="field">
+  <%= f.label tr :schedule %>
+  <%= f.text_field :schedule %>
+  <%= field_error establishment, :schedule %>
+</div>
+  <div class="field">
+  <%= f.label tr :phone %>
+  <%= f.text_field :phone %>
+  <%= field_error establishment, :phone %>
+</div>
 <%= f.fields_for :address do |a| %>
   <div class="field">
   <%= a.label tr :street %>
   <%= a.text_field :street %>
-  <%= field_error address, :street %>
 </div>
 <div class="field">
   <%= a.label tr :city %>
   <%= a.text_field :city %>
-  <%= field_error address, :city %>
 </div>
 <div class="field">
   <%= a.label tr :state %>
   <%= a.text_field :state %>
-  <%= field_error address, :state %>
 </div>
 <div class="field">
   <%= a.label tr :country %>
   <%= a.text_field :country %>
-  <%= field_error address, :country %>
 </div>
 <div class="field">
   <%= a.label tr :zip_code %>
-  <%= a.text_field :zip_code %>
-  <%= field_error address, :zip_code %>
+  <%= a.text_field :zip_code, class: 'medium' %>
 </div>
       <% end %>
 <div class="submit">

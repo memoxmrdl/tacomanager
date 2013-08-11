@@ -1,7 +1,7 @@
 module ApplicationHelper
   def field_error(model, field)
     if model.errors[field].any?
-      content_tag :span, class: 'error_help' do
+      content_tag :span, class: 'error-help' do
         model.errors[field].first
       end
     end
@@ -13,13 +13,22 @@ module ApplicationHelper
 
   def display_alert
     content_tag :div, class: 'alert' do
-      flash[:alert]
-    end if flash[:alert]
+      flash.now[:alert]
+    end if flash.now[:alert]
   end
 
   def display_notice
     content_tag :div, class: 'notice' do
       flash[:notice]
     end if flash[:notice]
+  end
+
+  def message_empty(msg)
+    content_tag :span, msg, class: 'message-empty'
+  end
+
+  def display_foods(message)
+    return render @foods unless @foods.blank?
+    message_empty message
   end
 end

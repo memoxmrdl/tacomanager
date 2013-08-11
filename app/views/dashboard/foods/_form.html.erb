@@ -1,0 +1,21 @@
+<%= form_for food, url: { action: :create } do |f| %>
+  <div class="field">
+  <%= f.label tr :name %>
+  <%= f.text_field :name %>
+  <%= field_error food, :name %>
+</div>
+  <div class="field">
+  <%= f.label tr :description %>
+  <%= f.text_field :description %>
+  <%= field_error food, :description %>
+</div>
+  <div class="field">
+  <%= f.label tr :price %>
+  <%= f.text_field :price %>
+  <%= field_error food, :price %>
+</div>
+<div class="submit">
+  <%= f.submit submit  %>
+  <%= link_to t('.cancel'), dashboard_establishment_path(id: params[:establishment_id] ) %>
+</div>
+<% end %>

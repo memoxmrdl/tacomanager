@@ -21,9 +21,9 @@ class Dashboard::FoodsController < DashboardController
     @food = Food.new params_food
     @food.establishment = @establishment
 
-    return redirect_to dashboard_establishment_foods_path, notice: 'created' if @food.save
+    return redirect_to dashboard_establishment_path(id: @establishment.id), notice: 'created' if @food.save
 
-    flash.now[:alert] = 'error'
+    flash.now[:alert] = t('.error')
     render :new
   end
 

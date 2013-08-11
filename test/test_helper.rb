@@ -59,6 +59,11 @@ class Capybara::Rails::TestCase
   prepare
 
   def setup
+    User.destroy_all
+    Authorization.destroy_all
+
+    Warden.test_reset!
+    Capybara.reset_sessions!
   end
 
   def teardown

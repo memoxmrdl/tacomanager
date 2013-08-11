@@ -1,35 +1,32 @@
-class ApplicationController < ActionController::Base
-  layout :set_layout
-  before_action :set_locale
+<section class="content">
+  <%= display_notice %>
+  <div class="content title-item">
+    <h3><%= @establishment.name %></h3>
+    <%= link_to 'Ordenar', new_dashboard_order_path, class: 'button' %>
+    <%= link_to 'Agregar comida', new_dashboard_establishment_food_path(establishment_id: @establishment.id), class: 'button'  %>
+  </div>
+  <p class="content">
+  Domicilio: <%= @establishment.address.full_address %></br>
+  Horarios: <%= @establishment.schedule %></br>
+  Telefonos: <%= @establishment.phone %>
+  </p>
+  <div class="span4">
+    <div id="map"></div>
+  </div>
+  <div class="span7">
+    <h4 class="content menu">Menu:</h4>
+    <section id="foods">
+      <%= display_foods t('.food_empty') %>
+    </section>
+  </div>
+</section>
+<script type="text/javascript">
+<% params = "#{@establishment.address.latitude}, #{@establishment.address.longitude}".html_safe %>
+document.addEventListener('page:change', function(){
+  new App.Utilities.Map(<%= params %>);
+});
 
-  protect_from_forgery with: :exception
-  helper_method :current_identity, :signed_in?, :warden
-
-  private
-
-  def set_locale
-    I18n.locale = params[:locale] || I18n.default_locale
-  end
-
-  def set_layout
-    signed_in? ? 'dashboard' : 'application'
-  end
-
-  protected
-
-  def warden
-    request.env['warden']
-  end
-
-  def current_identity
-    warden.user(scope: :authorization)
-  end
-
-  def signed_in?
-    warden.authenticate?(scope: :authorization)
-  end
-
-  def authenticate!
-    redirect_to root_path, alert: 'hubo problemas' unless signed_in?
-  end
-end
+$(function(){
+  new App.Utilities.Map(<%= params %>);
+});
+</script>

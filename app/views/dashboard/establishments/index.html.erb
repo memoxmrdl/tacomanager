@@ -5,6 +5,6 @@
     <%= link_to 'Crear nuevo', new_dashboard_establishment_path, class: 'button'  %>
   </div>
   <section id="establishments" class="content">
-    <%= render partial: 'establishment', collection: @establishments %>
+    <%= render @establishments or message_empty t('.empty')  %>
   </section>
 </section>
