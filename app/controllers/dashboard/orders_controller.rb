@@ -6,6 +6,7 @@ class Dashboard::OrdersController < DashboardController
 
     @establishment = Establishment.find_by_id(params[:establishment_id])
     @foods = Food.where(establishment_id: params[:establishment_id])
+    @order_details = OrderDetails.where(order_id: @order.id)
   end
 
   def create

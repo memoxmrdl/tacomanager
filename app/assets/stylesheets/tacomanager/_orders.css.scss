@@ -33,7 +33,7 @@
   }
 
   #foods, #order_details {
-    height: 391px;
+    height: 400px;
     overflow-y: scroll;
     border-radius: 5px;
     background-color: #fff;
@@ -43,9 +43,20 @@
 
   #order_details {
     height: 300px !important;
+
+    .item-detail {
+      ul {
+        list-style-type: none;
+
+        li {
+          float: left;
+        }
+      }
+    }
   }
 
   .food {
+    cursor: pointer;
     float: left;
     width: 204px;
     background-color: #eee;
@@ -83,6 +94,33 @@
 
       h4 {
         font-size: .8em;
+      }
+    }
+  }
+
+  .order_detail {
+    @extend .food;
+    width: 530px !important;
+    cursor: default;
+
+    h4 {
+      width: 240px;
+    }
+
+    .quantity, .remove, .payment {
+      float: left;
+      margin: 5px;
+    }
+
+    .remove, .payment {
+      font-size: .6em;
+      cursor: pointer;
+    }
+
+    .quantity {
+      input {
+        text-align: right;
+        padding: 5px;
       }
     }
   }

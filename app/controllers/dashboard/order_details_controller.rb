@@ -6,6 +6,7 @@ class Dashboard::OrderDetailsController < DashboardController
     @order_detail = OrderDetails.new order_detail_params
     @order_detail.user = current_identity.user
     @order_detail.order = @order
+    @order_detail.quantity = 1
     @order_detail.save
 
     respond_with @order_detail
@@ -33,6 +34,6 @@ class Dashboard::OrderDetailsController < DashboardController
   end
 
   def order_detail_params
-    params.require(:order_details).permit(:food_id, :quantity)
+    params.require(:order_details).permit(:food_id)
   end
 end

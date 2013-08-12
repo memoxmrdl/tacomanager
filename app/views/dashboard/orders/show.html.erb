@@ -4,15 +4,25 @@
     <h3><%= @order.name %></h3>
     <%= link_to 'Cancelar orden', '#', class: 'button'  %>
   </div>
-  <div class="span6">
+  <div class="span4">
     <h4 class="content menu"><%= @establishment.name %> :: Menu:</h4>
-    <section id="foods">
+    <section id="foods" data-establishment-id="<%= @establishment.id %>">
       <%= display_foods t('.food_empty') %>
     </section>
   </div>
-  <div class="span4">
+  <div class="span7">
     <h4 class="content order_detail">Orden detallado:</h4>
     <section id="order_details">
+      <%= render partial: 'dashboard/order_details/order_detail', collection: @order_details %>
     </section>
   </div>
 </section>
+<script type="text/javascript">
+document.addEventListener('page:change', function(){
+  new App.Utilities.Order();
+});
+
+$(function(){
+  new App.Utilities.Order();
+});
+</script>
