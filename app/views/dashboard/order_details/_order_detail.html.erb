@@ -2,10 +2,10 @@
   <div class="detail">
     <h4><%= order_detail.food.name %></h4>
     <div class="quantity">
-      <%= text_field_tag 'quantity', '', size: 3, maxlength: 3 %>
+      <%= text_field_tag 'quantity', order_detail.quantity, class: 'quantity', size: 3, maxlength: 3 %>
     </div>
     <div class="remove">Remover</div>
     <div class="payment">Pagado</div>
-    <div class="price"><%= number_to_currency(order_detail.food.price, :unit => "$") %></div>
+    <div class="price"><%= number_to_currency(order_detail.calculate_subtotal, :unit => "$") %></div>
   </div>
 </div>

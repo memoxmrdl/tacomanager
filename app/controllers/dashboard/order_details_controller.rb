@@ -34,6 +34,6 @@ class Dashboard::OrderDetailsController < DashboardController
   end
 
   def order_detail_params
-    params.require(:order_details).permit(:food_id)
+    params.require(:order_details).permit(:food_id, :quantity)
   end
 end

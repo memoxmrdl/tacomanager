@@ -36,4 +36,8 @@ module ApplicationHelper
     return image_tag object.image.image.url(:small) unless object.image.blank?
     content_tag :div, '', class: 'thumb-empty'
   end
+
+  def build_order_detail(item)
+    escape_javascript(render partial: 'dashboard/order_details/order_detail', object: item, as: :order_detail).html_safe
+  end
 end

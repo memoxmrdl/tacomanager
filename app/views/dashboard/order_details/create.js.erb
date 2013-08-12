@@ -1,1 +1,8 @@
-console.log("<%= @order_detail.inspect %>")
+<% if @order_detail %>
+    $("<%= build_order_detail(@order_detail) %>")
+  .hide()
+  .appendTo('#order_details')
+  .fadeIn('slow');
+<% else %>
+
+  <% end %>
