@@ -1,8 +1,4 @@
-.establishments {
-  .title {
-    margin-bottom: $margin;
-  }
-
+.orders {
   .title-item {
     margin-bottom: $margin;
 
@@ -28,35 +24,35 @@
       margin-right: $margin;
     }
 
-    .menu {
-      font-size: 1.3em;
+    .menu, .order_detail {
+      font-size: 1.2em;
       margin: 0;
       margin-bottom: ($margin / 2);
       margin-left: 0px !important;
     }
   }
 
-  #establishments {
+  #foods, #order_details {
     height: 391px;
     overflow-y: scroll;
     border-radius: 5px;
     background-color: #fff;
     padding: 20px;
-  }
-
-  #foods {
-    @extend #establishments;
     width: 100%;
   }
 
+  #order_details {
+    height: 300px !important;
+  }
 
-  .establishment {
+  .food {
     float: left;
     width: 204px;
     background-color: #eee;
     margin-right: 10px;
     margin-bottom: 10px;
     border-radius: 3px;
+    width: 213px;
 
     h4 {
       font-weight: 300;
@@ -74,12 +70,7 @@
       margin: 0 10px;
       margin-bottom: 10px;
     }
-  }
 
-  .food {
-    @extend .establishment;
-    width: 213px;
-    
     .price {
       float: right;
       font-size: .8em;
@@ -93,35 +84,6 @@
       h4 {
         font-size: .8em;
       }
-    }
-  }
-
-  #map {
-    border-radius: 3px;
-    width: 328px;
-    height: 200px;
-  }
-
-  .add_image {
-    margin: ($margin/2) 0;
-  }
-
-  .gallery {
-    width: 224px;
-    background-color: #fff;
-    margin-top: ($margin*2);
-
-    img {
-      margin: 7px;
-      display: block;
-      float: left;
-      padding: 9px;
-      border: 1px solid #ccc;
-    }
-
-    .clearfix {
-      clear: both;
-      float: left;
     }
   }
 }

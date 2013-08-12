@@ -31,4 +31,9 @@ module ApplicationHelper
     return render @foods unless @foods.blank?
     message_empty message
   end
+
+  def display_food_image(object)
+    return image_tag object.image.image.url(:small) unless object.image.blank?
+    content_tag :div, '', class: 'thumb-empty'
+  end
 end

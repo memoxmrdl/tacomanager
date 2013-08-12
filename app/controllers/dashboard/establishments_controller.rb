@@ -12,6 +12,7 @@ class Dashboard::EstablishmentsController < DashboardController
   def show
     return redirect_to dashboard_establishments_path, alert: 'not found' unless @establishment
 
+    @order = Order.new
     @foods = Food.where(establishment_id: params[:id])
   end
 

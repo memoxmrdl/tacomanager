@@ -32,11 +32,15 @@ es:
         save: 'Guardar'
       create:
         error: 'Surgio un error al guardar'
+        created: 'Se agrego nuevo platillo al establecimiento'
       form:
         name: 'Nombre'
         description: 'Descripcion'
         price: 'Precio'
         cancel: 'Cancelar'
+    images:
+      form:
+        add_image: 'Agregar'
 
   activerecord:
     errors:

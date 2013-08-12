@@ -9,11 +9,11 @@ Tacomanager::Application.routes.draw do
       resources :establishments do
         resources :foods
         resources :comment, only: :create
+        resources :orders, only: [:show, :create], as: 'orders' do
+          resources :order_details, only: [:create, :update, :destroy]
+        end
       end
-
-      resources :orders do
-        resources :order_details, only: [:create, :update, :destroy]
-      end
+      resources :image, only: [:create, :destroy]
     end
 
     root :to => 'home#index'
