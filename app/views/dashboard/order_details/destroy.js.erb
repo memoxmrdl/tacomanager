@@ -1,0 +1,7 @@
+<% if @order_detail.destroyed? %>
+    $(".order_detail[data-orderdetail-id=<%= @order_detail.id %>]").fadeOut(500, function(){
+      $(this).remove();
+    });
+<% else %>
+
+<% end %>
