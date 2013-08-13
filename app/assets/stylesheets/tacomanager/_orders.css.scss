@@ -1,0 +1,179 @@
+.orders {
+  .title-item {
+    margin-bottom: $margin;
+
+    h3 {
+      font-size: 2em !important;
+    }
+
+    #new_order {
+      float: right;
+      margin: 0;
+    }
+  }
+
+  .content {
+    h3 {
+      float: left;
+      margin: 0;
+      font-size: 1.5em;
+    }
+
+    .button_to {
+      float: right;
+      margin-right: $margin;
+    }
+
+    .menu, .order_detail {
+      font-size: 1.2em;
+      margin: 0;
+      margin-bottom: ($margin / 2);
+      margin-left: 0px !important;
+    }
+  }
+
+  #foods, #order_details {
+    height: 400px;
+    overflow-y: scroll;
+    border-radius: 5px;
+    background-color: #fff;
+    padding: 20px;
+    width: 100%;
+  }
+
+  #order_details {
+    height: 300px !important;
+
+    .item-detail {
+      ul {
+        list-style-type: none;
+
+        li {
+          float: left;
+        }
+      }
+    }
+  }
+
+  .food {
+    cursor: pointer;
+    float: left;
+    width: 275px;
+    background-color: #eee;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+
+    h4 {
+      font-weight: 300;
+      margin: 10px;
+      float: left;
+
+      a {
+        text-decoration: none;
+      }
+    }
+
+    p {
+      float: left;
+      font-size: .7em;
+      margin: 0 10px;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      float: right;
+      font-size: .8em;
+      margin: 5px;
+      font-weight: bold;
+    }
+
+    .detail {
+      width: 100%;
+
+      h4 {
+        font-size: .8em;
+      }
+    }
+  }
+
+  .order_detail {
+    @extend .food;
+    width: 530px !important;
+    cursor: default;
+
+    h4 {
+      width: 240px;
+    }
+
+    .quantity, .remove, .payment {
+      float: left;
+      margin: 5px;
+    }
+
+    .remove, .payment {
+      font-size: .6em;
+      cursor: pointer;
+    }
+
+    .remove {
+      color: #c92626;
+    }
+
+    .payment {
+      .pay {
+        font-size: 1.2em;
+        color: #2faf21;
+        font-weight: bold ;
+      }
+
+      .not_pay {
+        color: #000;
+      }
+    }
+
+    .quantity {
+      input {
+        text-align: right;
+        padding: 5px;
+      }
+    }
+  }
+
+  .details {
+
+    .options {
+      float: left;
+      width: 400px;
+
+      ul {
+        width: 400px;
+        float: left;
+        margin: 20px 0;
+        padding: 0;
+        list-style-type: none;
+
+        li {
+          margin: 0 5px;
+          float: left;
+        }
+      }
+
+      #status {
+        width: 110px;
+        height: 30px;
+        font-size: .9em;
+        padding: 5px;
+        background: #e27803;
+        color: #fff; 
+      }
+    }
+
+    #total {
+      float: right;
+      margin: 15px;
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+  }
+}

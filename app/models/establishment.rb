@@ -1,7 +1,6 @@
 class Establishment < ActiveRecord::Base
-  has_many :address
-
-  has_many :menu_items
+  has_one :address
+  has_many :foods
   has_many :orders
   has_many :comments
   has_many :images

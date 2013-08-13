@@ -19,8 +19,12 @@
   margin-top: 260px;
   margin-left: 570px;
 
+  h2 {
+    margin-bottom: ($margin / 2)
+  }
+
   .providers {
-    margin-left: $margin;
+    margin-left: ($margin*2);
   }
 }
 

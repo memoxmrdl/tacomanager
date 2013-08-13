@@ -59,6 +59,11 @@ class Capybara::Rails::TestCase
   prepare
 
   def setup
+    User.destroy_all
+    Authorization.destroy_all
+
+    Warden.test_reset!
+    Capybara.reset_sessions!
   end
 
   def teardown
@@ -71,5 +76,11 @@ class Capybara::Rails::TestCase
         'info' => { 'nickname' => 'Test user', 'email' => email }
       }
     )
+  end
+
+  def login_user
+    visit '/'
+
+    find('.github').click
   end
 end

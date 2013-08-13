@@ -2,3 +2,8 @@ en:
   layouts:
     application:
       sign_in: 'Sign in with:'
+
+  dashboard:
+    establishments:
+      new:
+        new: 'New establishment'

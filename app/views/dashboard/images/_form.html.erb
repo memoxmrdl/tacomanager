@@ -1,0 +1,5 @@
+<%= form_for object, url: dashboard_image_index_path, method: :post, html: { :multipart => true, class: 'add_image', id: 'add_image_item' } do |f| %>
+  <%= f.hidden_field :id %>
+  <%= f.file_field :image %>
+  <%= f.submit t('.add_image') %>
+<% end %>

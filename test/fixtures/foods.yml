@@ -2,8 +2,8 @@
 # http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  id: 100
+  id: 200
   name: 'Torta de lomo'
-  price: 24.00
+  price: 24
   description: 'deliciosa torta de lomo'
   establishment_id: 100

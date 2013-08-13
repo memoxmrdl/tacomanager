@@ -1,70 +1,41 @@
-require "test_helper"
+<section class="content">
+  <%= display_notice %>
+  <%= display_alert %>
+  <div class="content title-item">
+    <h3><%= @order.name %></h3>
+    <%= button_to "Cancelar orden", dashboard_establishment_order_path, method: :delete, class: 'destroy button' %>
+  </div>
+  <div class="span4">
+    <h4 class="content menu"><%= @establishment.name %> :: Menu:</h4>
+    <section id="foods" data-establishment-id="<%= @establishment.id %>">
+      <%= display_foods t('.food_empty') %>
+    </section>
+  </div>
+  <div class="span7">
+    <h4 class="content order_detail">Orden detallado:</h4>
+    <section id="order_details">
+      <%= render partial: 'dashboard/order_details/order_detail', collection: @order_details %>
+    </section>
+    <div class="details">
+      <div class="options">
+        <ul>
+          <li><%= link_to 'Invitar', '#', class: 'button' %></li>
+          <li><%= link_to 'Pagar orden', '#', class: 'button' %></li>
+          <li><%= select_tag 'status', options_status(@order.status), id: 'status' %>
+        </ul>
+      </div>
+      <div id="total">
+        <%= number_to_currency @order.total, unit: '$' %>
+      </div>
+    </div>
+  </div>
+</section>
+<script type="text/javascript">
+document.addEventListener('page:change', function(){
+  new App.Utilities.Order();
+});
 
-describe Dashboard::OrdersController do
-  let(:order) { orders(:one) }
-  let(:params) { { name: 'Tragones', user_id: 100, establishment_id: 100 } }
-
-  describe 'GET index' do
-    it 'should display orders that user logged' do
-      login_user
-
-      get :index
-
-      must_response_with :success
-      must_render_template :index
-    end
-  end
-
-  describe 'GET new' do
-    it 'should render new to create order' do
-      login_user
-
-      get :new
-
-      must_response_with :success
-      must_render_template :new
-    end
-  end
-
-  describe 'POST create' do
-    it 'should create a order' do
-      login_user
-
-      post :create, order: params
-
-      order_last = Order.last
-      must_redirect_to dashboard_order_path order_last
-      flash[:notice].wont_be_nil
-    end
-
-    it 'should create a order with invalid params' do
-      login_user
-
-      invalid_params = params.merge({ name:'' })
-      post :create, order: invalid_params
-
-      must_response_with :success
-      must_render_template :new
-    end
-  end
-
-  describe 'GET show' do
-    it 'should display a order' do
-      login_user
-
-      get :show, id: order.id
-
-      must_response_with :success
-      must_render_template :show
-    end
-
-    it 'should not display a order when not exists' do
-      login_user
-
-      get :show, id: 300
-
-      must_redirect_to dashboard_orders_path
-      flash[:alert].wont_be_nil
-    end
-  end
-end
+$(function(){
+  new App.Utilities.Order();
+});
+</script>

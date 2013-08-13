@@ -1,5 +1,6 @@
 class Dashboard::EstablishmentsController < DashboardController
   before_filter :establishment_find_by_id, only: [:show, :edit, :update]
+
   def index
     @establishments = Establishment.all
   end
@@ -9,15 +10,21 @@ class Dashboard::EstablishmentsController < DashboardController
   end
 
   def show
-  end
+    return redirect_to dashboard_establishments_path, alert: 'not found' unless @establishment
 
+    @order = Order.new
+    @foods = Food.where(establishment_id: params[:id])
+  end
 
   def create
     @establishment = Establishment.new params_establishment
+    @establishment.build_address params_address
 
-    return redirect_to dashboard_establishments_path, notice: 'created' if @establishment.save
+    if @establishment.save
+      return redirect_to dashboard_establishments_path, notice: t('.created')
+    end
 
-    flash.now[:alert] = 'error'
+    flash.now[:alert] = t('.error')
     render :new
   end
 
@@ -31,7 +38,7 @@ class Dashboard::EstablishmentsController < DashboardController
     message = redirect_message @establishment, updated, 'updated'
     return redirect_to dashboard_establishments_path, message unless message.empty?
 
-    flash.now[:alert] = 'error'
+    flash.now[:alert] = t('.error')
     render :edit
   end
 
@@ -52,7 +59,11 @@ class Dashboard::EstablishmentsController < DashboardController
     @establishment = Establishment.find_by_id params[:id]
   end
 
+  def params_address
+    params.require(:establishment).require(:address).permit(:street, :city, :state, :country, :zip_code)
+  end
+
   def params_establishment
-    params.require(:establishment).permit(:name)
+    params.require(:establishment).permit(:name, :schedule, :phone)
   end
 end

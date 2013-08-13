@@ -4,10 +4,10 @@
 }
 
 body {
-  font-family: 'Open sans', sans-serif;
+  font-family: 'Arial', sans-serif;
   background: image-url('background.jpg') repeat;
   margin: 0;
-  overflow: hidden;
+  overflow: auto;
 }
 
 .container {
@@ -38,4 +38,122 @@ body {
   height: 440px;
   background-color: #eee;
   margin-top: 50px;
+}
+
+form {
+  margin: $margin;
+
+  .field {
+    margin-bottom: 10px;
+
+    label {
+      font-size: .9em;
+      width: 100px;
+      display: inline-block;
+
+      &:after {
+        content: ':';
+      }
+    }
+  }
+
+  .small {
+    width: 80px !important;
+  }
+
+  .medium {
+    width: 100px !important;
+  }
+
+  .field_with_errors {
+    margin: 0;
+    display: inline-block;
+
+    input, textarea { 
+      margin-right: ($margin / 4);
+      border: 1px solid #e61820 !important; 
+    }
+  }
+
+  input[type="text"] {
+    border-radius: 3px;
+    border: .1em solid #ccc;
+    width: 200px;
+    height: 25px;
+    padding: 5px 4px;
+  }
+
+  .error-help {
+    font-size: .6em;
+    color: #e61820;
+    display: inline-block;
+  }
+
+  .submit {
+    margin-top: $margin;
+    margin-left: 99px;
+    float: left;
+
+    a {
+      float: left;
+      margin-right: 10px !important;
+      @include button(simple, #ff0000);
+    }
+
+    input[type="submit"] {
+      float: right;
+      @include button;
+    }
+  }
+}
+
+.notice {
+  margin-left: $margin;
+  margin-bottom: $margin;
+  background-color: #1d9e22;
+  padding: 5px 10px;
+  color: #fff;
+  font-weight: bold;
+  font-size: .8em;
+  border-radius: 3px;
+  width: 612px;
+}
+
+.alert {
+  margin-left: $margin;
+  margin-bottom: $margin;
+  background-color: #ed595e;
+  padding: 5px 10px;
+  color: #fff;
+  font-weight: bold;
+  font-size: .8em;
+  border-radius: 3px;
+  width: 612px;
+}
+
+.button {
+  @include button(simple, #f39b39);
+  font-size: .8em;
+}
+
+.message {
+  margin: 0;
+  z-index: 1051;
+  height: 53px;
+  position: absolute;
+  width: 100%;
+  opacity: 0.6;
+  color: #fff;
+  display: none;
+  padding: 13px;
+  text-align: center;
+  font-size: 130%;
+
+  &.alert {
+    background-color: #c12425;
+  }
+
+  &.notice {
+    background-color: #1c962e;
+  }
 }

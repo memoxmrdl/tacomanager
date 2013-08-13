@@ -16,14 +16,15 @@ class Dashboard::FoodsController < DashboardController
   def create
     @establishment = Establishment.find_by_id params[:establishment_id]
 
-    return redirect_to dashboard_establishment_foods_path, alert: 'not exists' unless @establishment
+    return redirect_to dashboard_establishment_foods_path, alert: t('.not_found') unless @establishment
 
     @food = Food.new params_food
+    @food.image = Image.new image: params[:food][:image]
     @food.establishment = @establishment
 
-    return redirect_to dashboard_establishment_foods_path, notice: 'created' if @food.save
+    return redirect_to dashboard_establishment_path(id: @establishment.id), notice: t('.created') if @food.save
 
-    flash.now[:alert] = 'error'
+    flash.now[:alert] = t('.error')
     render :new
   end
 
