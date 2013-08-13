@@ -3,7 +3,71 @@ es:
     application:
       sign_in: 'Inicia sesíon con:'
 
+  dashboard:
+    orders:
+      create:
+        created: 'Su orden fue creada correctamente'
+      show:
+        not_found_establishment: 'No se encontro ningun establecimiento para esa orden'
+        not_found_order: 'No se encontro ninguna orden'
+      destroy:
+        deleted: 'Su orden fue eliminada correctamente'
+    order_details:
+      update:
+        failed: 'Operacion fallo o datos incorrectos'
+    establishments:
+      new:
+        new: 'Nuevo establecimiento'
+        save: 'Guardar'
+      form:
+        name: 'Nombre'
+        schedule: 'Horarios'
+        phone: 'Telefonos'
+        street: 'Calle'
+        city: 'Ciudad'
+        state: 'Estado'
+        country: 'Pais'
+        zip_code: 'Codigo postal'
+        cancel: 'Cancelar'
+      create:
+        created: 'Establecimiento creado'
+        error: 'Surgio un error al guardar'
+      index:
+        establishments: 'Establecimientos'
+        empty: 'No hay ningun establecimiento'
+      show:
+        food_empty: 'No hay ningun platillo'
+    foods:
+      new:
+        new_food: 'Nuevo platillo'
+        save: 'Guardar'
+      create:
+        error: 'Surgio un error al guardar'
+        created: 'Se agrego nuevo platillo al establecimiento'
+      form:
+        name: 'Nombre'
+        description: 'Descripcion'
+        price: 'Precio'
+        cancel: 'Cancelar'
+    images:
+      form:
+        add_image: 'Agregar'
+
   activerecord:
     errors:
       messages:
         record_invalid: 'Registro invalido'
+      models:
+        establishment:
+          attributes:
+            name:
+              blank: 'Campo es requerido'
+              taken: 'Ya existe un registro con este nombre'
+        food:
+          attributes:
+            name:
+              blank: 'Campo es requerido'
+            price:
+              blank: 'Campo es requerido'
+              not_a_number: 'Precio invalido'
+              greater_than_or_equal_to: 'Ingrese un precio real'

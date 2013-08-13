@@ -2,17 +2,19 @@
 # http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  street: MyString
-  city: MyString
-  state: MyString
-  country: MyString
-  zip_code: MyString
-  establishment_id: 1
+  id: 100
+  street: 'Marciano #45'
+  city: 'Colima'
+  state: 'Colima'
+  country: 'Mexico'
+  zip_code: '29120'
+  establishment_id: 100
 
 two:
-  street: MyString
-  city: MyString
-  state: MyString
-  country: MyString
-  zip_code: MyString
+  id: 200
+  street: 'Av. Constitucion #1950'
+  city: 'Colima'
+  state: 'Colima'
+  country: 'Mexico'
+  zip_code: '28017'
   establishment_id: 1

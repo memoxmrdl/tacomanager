@@ -1,3 +1,127 @@
-// Place all the styles related to the establishments controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.establishments {
+  .title {
+    margin-bottom: $margin;
+  }
+
+  .title-item {
+    margin-bottom: $margin;
+
+    h3 {
+      font-size: 2em !important;
+    }
+
+    #new_order {
+      float: right;
+      margin: 0;
+    }
+  }
+
+  .content {
+    h3 {
+      float: left;
+      margin: 0;
+      font-size: 1.5em;
+    }
+
+    a {
+      float: right;
+      margin-right: $margin;
+    }
+
+    .menu {
+      font-size: 1.3em;
+      margin: 0;
+      margin-bottom: ($margin / 2);
+      margin-left: 0px !important;
+    }
+  }
+
+  #establishments {
+    height: 391px;
+    overflow-y: scroll;
+    border-radius: 5px;
+    background-color: #fff;
+    padding: 20px;
+  }
+
+  #foods {
+    @extend #establishments;
+    width: 100%;
+  }
+
+
+  .establishment {
+    float: left;
+    width: 204px;
+    background-color: #eee;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+
+    h4 {
+      font-weight: 300;
+      margin: 10px;
+      float: left;
+
+      a {
+        text-decoration: none;
+      }
+    }
+
+    p {
+      float: left;
+      font-size: .7em;
+      margin: 0 10px;
+      margin-bottom: 10px;
+    }
+  }
+
+  .food {
+    @extend .establishment;
+    width: 213px;
+    
+    .price {
+      float: right;
+      font-size: .8em;
+      margin: 5px;
+      font-weight: bold;
+    }
+
+    .detail {
+      width: 100%;
+
+      h4 {
+        font-size: .8em;
+      }
+    }
+  }
+
+  #map {
+    border-radius: 3px;
+    width: 328px;
+    height: 200px;
+  }
+
+  .add_image {
+    margin: ($margin/2) 0;
+  }
+
+  .gallery {
+    width: 224px;
+    background-color: #fff;
+    margin-top: ($margin*2);
+
+    img {
+      margin: 7px;
+      display: block;
+      float: left;
+      padding: 9px;
+      border: 1px solid #ccc;
+    }
+
+    .clearfix {
+      clear: both;
+      float: left;
+    }
+  }
+}

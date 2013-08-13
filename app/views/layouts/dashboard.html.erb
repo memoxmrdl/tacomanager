@@ -2,7 +2,6 @@
 <html>
 <head>
   <title>TacoManager</title>
-  <%= stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Open+Sans:700italic,400,300', media: 'all' %>
   <%= stylesheet_link_tag    "application", media: 'all' %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -14,17 +13,19 @@
     <div class="span5 menu">
       <ul>
         <li><%= link_to 'Home', dashboard_root_path %></li>
-        <li><%= link_to 'New order', new_dashboard_order_path %></li>
+        <li><%= link_to 'New order', '' %></li>
         <li><%= link_to 'Establishments', dashboard_establishments_path %></li>
       </ul>
     </div>
   </div>
 </header>
-<div class="bar-dashboard">
+<section class="bar-dashboard">
   <div class="container <%= controller.controller_name %>">
     <%= yield %>
   </div>
-</div>
+</section>
+<footer>
+</footer>
 </div>
 </body>
 </html>

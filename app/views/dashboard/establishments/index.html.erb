@@ -1,61 +1,11 @@
-require "test_helper"
-
-describe Dashboard::EstablishmentsController do
-  let(:establishment) {
-    Establishment.create name: 'La puerta negra'
-  }
-
-  describe 'GET index' do
-    it 'should display all establishments for logged user' do
-      login_user
-
-      get :index
-
-      must_response_with :success
-      must_render_template :index
-    end
-
-    it 'should not display all establishments when not logged user' do
-      get :index
-
-      must_redirect_to root_path
-      flash[:alert].wont_be_nil
-    end
-  end
-
-  describe 'GET new' do
-    it 'should display new form establishment for logged user' do
-      login_user
-
-      get :new
-
-      must_response_with :success
-      must_render_template :new
-    end
-
-    it 'should redirect to establishment whent not logged user' do
-      get :new
-
-      must_redirect_to root_path
-      flash[:alert].wont_be_nil
-    end
-  end
-
-  describe 'GET show' do
-    it 'should show establishment for that all users to be logged' do
-      login_user
-
-      get :show, id: establishment.id
-
-      must_response_with :success
-      must_render_template :show
-    end
-
-    it 'should not show establishment when not logged user' do
-      get :show, id: establishment.id
-
-      must_redirect_to root_path
-      flash[:alert].wont_be_nil
-    end
-  end
-end
+<section class="content">
+  <%= display_notice %>
+  <%= display_alert %>
+  <div class="content title">
+    <h3><%= t('.establishments') %></h3>
+    <%= link_to 'Crear nuevo', new_dashboard_establishment_path, class: 'button'  %>
+  </div>
+  <section id="establishments" class="content">
+    <%= render @establishments or message_empty t('.empty')  %>
+  </section>
+</section>

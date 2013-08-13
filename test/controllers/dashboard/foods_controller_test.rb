@@ -76,7 +76,7 @@ describe Dashboard::FoodsController do
 
       post :create, establishment_id: establishment.id, food: params
 
-      must_redirect_to dashboard_establishment_foods_path
+      must_redirect_to dashboard_establishment_path(id: establishment.id)
       flash[:notice].wont_be_nil
     end
 

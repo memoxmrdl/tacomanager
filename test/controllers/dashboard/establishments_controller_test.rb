@@ -2,10 +2,12 @@ require "test_helper"
 
 describe Dashboard::EstablishmentsController do
   let(:establishment) {
-    Establishment.create name: 'La puerta negra'
+    establishments(:one)
   }
 
-  let(:params) { { name: 'Don panchito' }  }
+  let(:params) { { name: 'Don panchito',
+    address: { street: 'Av. Constitucion #24', city: 'Colima',
+    state: 'Colima', country: 'Mexico', zip_code: '28917' } }  }
 
   describe 'GET index' do
     it 'should display all establishments for logged user' do
