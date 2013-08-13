@@ -2,7 +2,7 @@ require "test_helper"
 
 describe Dashboard::EstablishmentsController do
   let(:establishment) {
-    Establishment.create name: 'La puerta negra'
+    establishments(:one)
   }
 
   let(:params) { { name: 'Don panchito',

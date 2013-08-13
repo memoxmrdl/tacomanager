@@ -19,7 +19,7 @@ class Dashboard::OrdersController < DashboardController
     return redirect_to dashboard_establishments_path, alert: t('.not_found') unless @establishment
 
     @order = Order.new
-    @order.name = 'Nueva orden'
+    @order.name = params_order[:name] || 'Nueva orden'
     @order.establishment = @establishment
     @order.user = current_identity.user
 
@@ -40,13 +40,13 @@ class Dashboard::OrdersController < DashboardController
     deleted = @order.destroy if @order
     message = redirect_message @order, deleted, t('.deleted')
 
-    redirect_to  dashboard_establishments_path, message
+    redirect_to dashboard_establishments_path, message
   end
 
   private
 
   def params_order
-    params.require(:order).permit(:status)
+    params.require(:order).permit(:name, :status)
   end
 
   def order_find_by_id
