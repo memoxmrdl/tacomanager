@@ -1,18 +1,22 @@
 class Dashboard::OrdersController < DashboardController
-  before_filter :order_find_by_id, only: [:show, :destroy]
+  before_filter :order_find_by_id, only: [:show, :destroy, :update]
+  respond_to :js, only: :update
 
   def show
-    return redirect_to dashboard_orders_path, alert: 'not found' unless @order
+    return redirect_to dashboard_root_path, alert: t('.not_found_order') unless @order
 
     @establishment = Establishment.find_by_id(params[:establishment_id])
-    @foods = Food.where(establishment_id: params[:establishment_id])
-    @order_details = OrderDetails.where(order_id: @order.id)
+
+    return redirect_to dashboard_establishments_path, alert: t('.not_found_establishment') unless @establishment
+
+    @foods = Food.where(establishment_id: @establishment.id)
+    @order_details = OrderDetail.where(order_id: @order.id)
   end
 
   def create
     @establishment = Establishment.find_by_id params[:establishment_id]
 
-    return redirect_to dashboard_establishments_path, alert: 'Exito!' unless @establishment
+    return redirect_to dashboard_establishments_path, alert: t('.not_found') unless @establishment
 
     @order = Order.new
     @order.name = 'Nueva orden'
@@ -20,20 +24,30 @@ class Dashboard::OrdersController < DashboardController
     @order.user = current_identity.user
 
     if @order.save
-      return redirect_to dashboard_establishment_order_path(id: @order.id), notice: 'created'
+      return redirect_to dashboard_establishment_order_path(id: @order.id), notice: t('.created')
     end
 
-    render text: @order.errors.inspect
+    redirect_to dashboard_establishments_path, alert: t('.error')
+  end
+
+  def update
+    @order.update_attributes params_order
+
+    respond_with @order
   end
 
   def destroy
     deleted = @order.destroy if @order
-    message = redirect_message @order, deleted, 'deleted'
+    message = redirect_message @order, deleted, t('.deleted')
 
-    redirect_to dashboard_orders_path, message
+    redirect_to  dashboard_establishments_path, message
   end
 
   private
+
+  def params_order
+    params.require(:order).permit(:status)
+  end
 
   def order_find_by_id
     @order = Order.find_by_id params[:id]

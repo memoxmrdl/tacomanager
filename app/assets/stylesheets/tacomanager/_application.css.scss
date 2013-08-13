@@ -135,3 +135,25 @@ form {
   @include button(simple, #f39b39);
   font-size: .8em;
 }
+
+.message {
+  margin: 0;
+  z-index: 1051;
+  height: 53px;
+  position: absolute;
+  width: 100%;
+  opacity: 0.6;
+  color: #fff;
+  display: none;
+  padding: 13px;
+  text-align: center;
+  font-size: 130%;
+
+  &.alert {
+    background-color: #c12425;
+  }
+
+  &.notice {
+    background-color: #1c962e;
+  }
+}

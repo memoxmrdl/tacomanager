@@ -4,6 +4,17 @@ es:
       sign_in: 'Inicia sesíon con:'
 
   dashboard:
+    orders:
+      create:
+        created: 'Su orden fue creada correctamente'
+      show:
+        not_found_establishment: 'No se encontro ningun establecimiento para esa orden'
+        not_found_order: 'No se encontro ninguna orden'
+      destroy:
+        deleted: 'Su orden fue eliminada correctamente'
+    order_details:
+      update:
+        failed: 'Operacion fallo o datos incorrectos'
     establishments:
       new:
         new: 'Nuevo establecimiento'

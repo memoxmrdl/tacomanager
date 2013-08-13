@@ -9,7 +9,7 @@ Tacomanager::Application.routes.draw do
       resources :establishments do
         resources :foods
         resources :comment, only: :create
-        resources :orders, only: [:show, :create], as: 'orders' do
+        resources :orders, only: [:show, :create, :destroy, :update], as: 'orders' do
           resources :order_details, only: [:create, :update, :destroy]
         end
       end

@@ -6,4 +6,5 @@
 //= require map
 //= require gallery
 //= require order
+//= require msgerror
 

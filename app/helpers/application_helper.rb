@@ -40,4 +40,14 @@ module ApplicationHelper
   def build_order_detail(item)
     escape_javascript(render partial: 'dashboard/order_details/order_detail', object: item, as: :order_detail).html_safe
   end
+
+  def options_status(selected)
+    selected = 0 if selected.nil?
+    options_for_select({ 'Ninguno'=>0, 'Recibido'=>1, 'No llega'=>2, 'No llego'=>3 }, selected)
+  end
+
+  def check_payment(payment)
+    klass = payment ? 'pay' : 'not_pay'
+    content_tag :div, 'Pagado', class: klass
+  end
 end

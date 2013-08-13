@@ -19,7 +19,7 @@
       font-size: 1.5em;
     }
 
-    a {
+    .button_to {
       float: right;
       margin-right: $margin;
     }
@@ -116,11 +116,64 @@
       cursor: pointer;
     }
 
+    .remove {
+      color: #c92626;
+    }
+
+    .payment {
+      .pay {
+        font-size: 1.2em;
+        color: #2faf21;
+        font-weight: bold ;
+      }
+
+      .not_pay {
+        color: #000;
+      }
+    }
+
     .quantity {
       input {
         text-align: right;
         padding: 5px;
       }
+    }
+  }
+
+  .details {
+
+    .options {
+      float: left;
+      width: 400px;
+
+      ul {
+        width: 400px;
+        float: left;
+        margin: 20px 0;
+        padding: 0;
+        list-style-type: none;
+
+        li {
+          margin: 0 5px;
+          float: left;
+        }
+      }
+
+      #status {
+        width: 110px;
+        height: 30px;
+        font-size: .9em;
+        padding: 5px;
+        background: #e27803;
+        color: #fff; 
+      }
+    }
+
+    #total {
+      float: right;
+      margin: 15px;
+      font-size: 1.5em;
+      font-weight: bold;
     }
   }
 }

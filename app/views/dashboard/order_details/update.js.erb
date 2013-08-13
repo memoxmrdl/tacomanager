@@ -1,0 +1,11 @@
+<% unless @order_detail.changed? %>
+  order_detail =$(".order_detail[data-orderdetail-id=<%= @order_detail.id %>]")
+  order_detail.find('.price')
+  .text("<%= number_to_currency @order_detail.calculate_subtotal, unit: '$' %>");
+
+  $('#total').text("<%= number_to_currency @order.total, unit: '$' %>");
+
+  order_detail.find('.payment').children().attr('class', "<%= @order_detail.payment? ? 'pay' : 'not_pay' %>");
+<% else %>
+ new App.Utilities.MsgError("<%= t('.failed') %>");
+<% end %>

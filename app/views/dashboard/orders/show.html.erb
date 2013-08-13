@@ -1,8 +1,9 @@
 <section class="content">
   <%= display_notice %>
+  <%= display_alert %>
   <div class="content title-item">
     <h3><%= @order.name %></h3>
-    <%= link_to 'Cancelar orden', '#', class: 'button'  %>
+    <%= button_to "Cancelar orden", dashboard_establishment_order_path, method: :delete, class: 'destroy button' %>
   </div>
   <div class="span4">
     <h4 class="content menu"><%= @establishment.name %> :: Menu:</h4>
@@ -15,6 +16,18 @@
     <section id="order_details">
       <%= render partial: 'dashboard/order_details/order_detail', collection: @order_details %>
     </section>
+    <div class="details">
+      <div class="options">
+        <ul>
+          <li><%= link_to 'Invitar', '#', class: 'button' %></li>
+          <li><%= link_to 'Pagar orden', '#', class: 'button' %></li>
+          <li><%= select_tag 'status', options_status(@order.status), id: 'status' %>
+        </ul>
+      </div>
+      <div id="total">
+        <%= number_to_currency @order.total, unit: '$' %>
+      </div>
+    </div>
   </div>
 </section>
 <script type="text/javascript">

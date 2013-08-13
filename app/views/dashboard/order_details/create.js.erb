@@ -2,7 +2,10 @@
  $("<%= build_order_detail(@order_detail) %>")
   .hide()
   .appendTo('#order_details')
-  .fadeIn('slow');
+  .fadeIn('slow', function() {
+    new App.Utilities.Order();
+  });
+  $('#total').text("<%= number_to_currency @order.total, unit: '$' %>")
 <% else %>
-
+  new App.Utilities.MsgError("<%= t('.failed') %>");
 <% end %>
