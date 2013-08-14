@@ -111,22 +111,23 @@ form {
   margin-left: $margin;
   margin-bottom: $margin;
   background-color: #1d9e22;
-  padding: 5px 10px;
+  padding: 10px 20px;
   color: #fff;
   font-weight: bold;
-  font-size: .8em;
+  font-size: .9em;
   border-radius: 3px;
   width: 612px;
 }
 
 .alert {
   margin-left: $margin;
+  margin-right: $margin;
   margin-bottom: $margin;
   background-color: #ed595e;
-  padding: 5px 10px;
+  padding: 10px 20px;
   color: #fff;
   font-weight: bold;
-  font-size: .8em;
+  font-size: .9em;
   border-radius: 3px;
   width: 612px;
 }
