@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :authorizations
+  has_many :establishments
   has_one :image
 
   has_many :order_details
