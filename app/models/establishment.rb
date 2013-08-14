@@ -15,7 +15,7 @@ class Establishment < ActiveRecord::Base
   accepts_nested_attributes_for :address
 
   def info_valid?
-    valid_estab = foods.count > 0 && !(self.schedule.empty? && self.phone.empty?)
+    valid_estab = foods.count > 0 && !(self.schedule.empty? || self.phone.empty?)
     valid_addrs = !(address.latitude.nil? && address.longitude.nil?)
     valid_estab && valid_addrs
   end
