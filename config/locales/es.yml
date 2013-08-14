@@ -1,4 +1,5 @@
 es:
+  not_have_foods: 'Orden no puede ser pagada por que no tiene pedidos'
   layouts:
     application:
       sign_in: 'Inicia sesíon con:'
@@ -7,6 +8,7 @@ es:
     orders:
       create:
         created: 'Su orden fue creada correctamente'
+        info_invalid: 'El establecimiento no cumple con los requisitos para crear una orden'
       show:
         not_found_establishment: 'No se encontro ningun establecimiento para esa orden'
         not_found_order: 'No se encontro ninguna orden'
@@ -16,6 +18,9 @@ es:
       update:
         failed: 'Operacion fallo o datos incorrectos'
     establishments:
+      edit:
+        edit: 'Editar'
+        update: 'Actualizar'
       new:
         new: 'Nuevo establecimiento'
         save: 'Guardar'
@@ -37,6 +42,8 @@ es:
         empty: 'No hay ningun establecimiento'
       show:
         food_empty: 'No hay ningun platillo'
+        not_found: 'No se encontro el establecimiento'
+
     foods:
       new:
         new_food: 'Nuevo platillo'
