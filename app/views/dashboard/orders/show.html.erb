@@ -19,8 +19,8 @@
     <div class="details">
       <div class="options">
         <ul>
-          <li><%= link_to 'Invitar', '#', class: 'button' %></li>
-          <li><%= link_to 'Pagar orden', '#', class: 'button' %></li>
+          <li><%= link_to 'Invitar', new_dashboard_establishment_order_invitation_path(order_id: @order.id), id: 'invited', class: 'button' %></li>
+          <li><%= button_tag 'Pagar orden', id: 'payment', class: 'button', data: { id: @order.id } %></li>
           <li><%= select_tag 'status', options_status(@order.status), id: 'status' %>
         </ul>
       </div>

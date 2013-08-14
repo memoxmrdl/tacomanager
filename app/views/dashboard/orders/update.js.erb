@@ -1,0 +1,10 @@
+<% if @order.valid? %>
+    orders = $('.order_detail').find('.payment').children();
+    orders.removeClass('not_pay');
+    orders.addClass('pay');
+
+    $('.destroy, .remove, #payment, #invited').remove();
+    $('.quantity').attr('disabled', 'disabled');
+<% else %>
+    new App.Utilities.MsgError("<%= @order.errors[:payment][0] %>")
+<% end %>

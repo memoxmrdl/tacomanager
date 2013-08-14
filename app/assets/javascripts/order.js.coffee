@@ -41,7 +41,11 @@ class Order
         type: 'PUT'
         data: { order: { status: status_id } }
 
-
+    $('#payment').on 'click', ->
+      $.ajax
+        url: document.URL
+        type: 'PUT'
+        data: { order: { payment: true } }
 
 
 App.Utilities.Order = Order

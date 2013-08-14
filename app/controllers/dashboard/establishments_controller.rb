@@ -7,10 +7,11 @@ class Dashboard::EstablishmentsController < DashboardController
 
   def new
     @establishment = Establishment.new
+    @establishment.build_address
   end
 
   def show
-    return redirect_to dashboard_establishments_path, alert: 'not found' unless @establishment
+    return redirect_to dashboard_establishments_path, alert: t('.not_found') unless @establishment
 
     @order = Order.new
     @foods = Food.where(establishment_id: params[:id])
@@ -19,6 +20,7 @@ class Dashboard::EstablishmentsController < DashboardController
   def create
     @establishment = Establishment.new params_establishment
     @establishment.build_address params_address
+    @establishment.user = current_identity.user
 
     if @establishment.save
       return redirect_to dashboard_establishments_path, notice: t('.created')
@@ -29,13 +31,16 @@ class Dashboard::EstablishmentsController < DashboardController
   end
 
   def edit
-    return redirect_to dashboard_establishments_path, alert: 'not found' unless @establishment
+    return redirect_to dashboard_establishments_path, alert: t('.not_found') unless @establishment
   end
 
   def update
-    updated = @establishment.update params_establishment if @establishment
+    if @establishment
+      @establishment.address.update params_address
+      updated = @establishment.update params_establishment
+    end
 
-    message = redirect_message @establishment, updated, 'updated'
+    message = redirect_message @establishment, updated, t('.created')
     return redirect_to dashboard_establishments_path, message unless message.empty?
 
     flash.now[:alert] = t('.error')
@@ -43,12 +48,12 @@ class Dashboard::EstablishmentsController < DashboardController
   end
 
   def destroy
-    return redirect_to dashboard_establishments_path, alert: 'permision deneged' unless current_identity.user.admin?
+    return redirect_to dashboard_establishments_path, alert: t('.not_permision') unless current_identity.user.admin?
 
     @establishment = Establishment.find_by_id params[:id]
     deleted = @establishment.destroy if @establishment
 
-    message = redirect_message @establishment, deleted, 'deleted'
+    message = redirect_message @establishment, deleted, t('.deleted')
 
     redirect_to dashboard_establishments_path, message
   end
@@ -60,7 +65,7 @@ class Dashboard::EstablishmentsController < DashboardController
   end
 
   def params_address
-    params.require(:establishment).require(:address).permit(:street, :city, :state, :country, :zip_code)
+    params.require(:establishment).require(:address_attributes).permit(:street, :city, :state, :country, :zip_code)
   end
 
   def params_establishment

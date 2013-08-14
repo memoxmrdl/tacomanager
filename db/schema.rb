@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130813081041) do
+ActiveRecord::Schema.define(version: 20130813171104) do
 
   create_table "addresses", force: true do |t|
     t.string   "street"
@@ -49,11 +49,14 @@ ActiveRecord::Schema.define(version: 20130813081041) do
 
   create_table "establishments", force: true do |t|
     t.string   "name",       null: false
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "schedule"
     t.string   "phone"
   end
+
+  add_index "establishments", ["user_id"], name: "index_establishments_on_user_id", using: :btree
 
   create_table "foods", force: true do |t|
     t.string   "name",             null: false
@@ -104,6 +107,8 @@ ActiveRecord::Schema.define(version: 20130813081041) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "status"
+    t.boolean  "payment"
+    t.integer  "user_id_payment"
   end
 
   add_index "orders", ["establishment_id"], name: "index_orders_on_establishment_id", using: :btree
