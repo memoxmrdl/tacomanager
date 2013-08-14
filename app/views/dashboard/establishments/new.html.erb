@@ -4,6 +4,6 @@
     <h3><%= t('.new') %></h3>
   </div>
   <div class="span7">
-    <%= render partial: 'form', locals: { establishment: @establishment, address: @address, url: new_dashboard_establishment_path, submit: t('.save') } %>
+    <%= render partial: 'form', locals: { establishment: @establishment, address: @address, url: dashboard_establishments_path, submit: t('.save') } %>
   </div>
 </div>

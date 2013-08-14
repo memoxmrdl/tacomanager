@@ -2,11 +2,12 @@
 <%= display_alert %>
 <h3>Bienvenido</h3>
 <div class="span4 column">
-  <h2>Your establishments</h2>
-  <%= render partial: 'establishment', collection: @establishments %>
+  <div class="establishments">
+    <%= render partial: 'establishment', collection: @establishments %>
+  </div>
 </div>
-
 <div class="span3 column">
-  <h2>Your orders</h2>
-  <%= render partial: 'order', collection: @orders %>
+  <div class="order">
+    <%= render partial: 'order', collection: @orders %>
+  </div>
 </div>
