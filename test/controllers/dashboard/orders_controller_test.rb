@@ -2,9 +2,8 @@ require "test_helper"
 
 describe Dashboard::OrdersController do
   let(:order) { orders(:one) }
-  let(:params) { { name: 'Tragones', establishment_id: 100 } }
+  let(:params) { { name: 'Tragones' } }
   let(:establishment) { establishments(:one) }
-
 
   describe 'POST create' do
     it 'should create a order' do

@@ -5,8 +5,8 @@ describe Dashboard::EstablishmentsController do
     establishments(:one)
   }
 
-  let(:params) { { name: 'Don panchito',
-    address: { street: 'Av. Constitucion #24', city: 'Colima',
+  let(:params) { { name: 'Don panchito', 
+    address_attributes: { street: 'Av. Constitucion #24', city: 'Colima',
     state: 'Colima', country: 'Mexico', zip_code: '28917' } }  }
 
   describe 'GET index' do
@@ -117,14 +117,14 @@ describe Dashboard::EstablishmentsController do
     it 'should update a establishment for logged user' do
       login_user
 
-      put :update, id: establishment.id, establishment: { name: 'Other name' }
+      put :update, id: establishment.id, establishment: params
 
       must_redirect_to dashboard_establishments_path
       flash[:notice].wont_be_nil
     end
 
     it 'should not updated when not logged user' do
-      put :update, id: establishment.id, establishment: { name: 'Other name' }
+      put :update, id: establishment.id, establishment: params
 
       must_redirect_to root_path
       flash[:alert].wont_be_nil
@@ -133,7 +133,7 @@ describe Dashboard::EstablishmentsController do
     it 'should render edit when not exists' do
       login_user
 
-      put :update, id: 200, establishment: { name: 'Other name' }
+      put :update, id: 200, establishment: params
 
       must_redirect_to dashboard_establishments_path
       flash[:alert].wont_be_nil

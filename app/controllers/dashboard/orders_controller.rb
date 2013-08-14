@@ -1,5 +1,7 @@
 class Dashboard::OrdersController < DashboardController
   before_filter :order_find_by_id, only: [:show, :destroy, :update]
+  before_filter :check_info_establishment, only: :create
+
   respond_to :js, only: :update
 
   def show
@@ -19,7 +21,7 @@ class Dashboard::OrdersController < DashboardController
     return redirect_to dashboard_establishments_path, alert: t('.not_found') unless @establishment
 
     @order = Order.new
-    @order.name = params_order[:name] || 'Nueva orden'
+    @order.name = 'Nueva orden'
     @order.establishment = @establishment
     @order.user = current_identity.user
 
@@ -46,10 +48,16 @@ class Dashboard::OrdersController < DashboardController
   private
 
   def params_order
-    params.require(:order).permit(:name, :status)
+    params.require(:order).permit(:name, :status, :payment)
   end
 
   def order_find_by_id
     @order = Order.find_by_id params[:id]
+  end
+
+  def check_info_establishment
+    @establishment = Establishment.find_by_id params[:establishment_id]
+
+    return redirect_to dashboard_establishments_path, alert: t('.info_invalid') unless @establishment.info_valid?
   end
 end
