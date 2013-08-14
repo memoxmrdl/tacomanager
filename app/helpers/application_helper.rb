@@ -43,11 +43,16 @@ module ApplicationHelper
 
   def options_status(selected)
     selected = 0 if selected.nil?
-    options_for_select({ 'Ninguno'=>0, 'Recibido'=>1, 'No llega'=>2, 'No llego'=>3 }, selected)
+    options_for_select({ '- Estatus -'=>0, 'Recibido'=>1, 'No llega'=>2, 'No llego'=>3 }, selected)
   end
 
   def check_payment(payment)
     klass = payment ? 'pay' : 'not_pay'
     content_tag :div, 'Pagado', class: klass
+  end
+
+  def render_js(object)
+    render = !object ? :active_utilities_order : :disable_utilities_order
+    content_for(render)
   end
 end

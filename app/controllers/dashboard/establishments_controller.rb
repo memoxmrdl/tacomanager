@@ -40,8 +40,8 @@ class Dashboard::EstablishmentsController < DashboardController
       updated = @establishment.update params_establishment
     end
 
-    message = redirect_message @establishment, updated, t('.created')
-    return redirect_to dashboard_establishments_path, message unless message.empty?
+    message = redirect_message @establishment, updated, t('.updated')
+    return redirect_to dashboard_establishment_path(id: @establishment.id), message unless message.empty?
 
     flash.now[:alert] = t('.error')
     render :edit

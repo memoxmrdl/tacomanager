@@ -19,9 +19,27 @@
       font-size: 1.5em;
     }
 
-    .button_to {
+    .option {
       float: right;
-      margin-right: $margin;
+
+      ul {
+        list-style-type: none;
+        margin: 0;
+
+        li {
+          float: left;
+          padding: 5px;
+
+          button, select {
+            margin: 0;
+          }
+
+          .button_to {
+            margin: 0;
+            button { margin: 0 }
+          }
+        }
+      }
     }
 
     .menu, .order_detail {
@@ -142,42 +160,17 @@
 
   .details {
 
-    .options {
+    .description-total {
+      width: 100%;
       float: left;
-      width: 400px;
-
-      ul {
-        width: 400px;
-        float: left;
-        margin: 20px 0;
-        padding: 0;
-        list-style-type: none;
-
-        li {
-          margin: 0 5px;
-          float: left;
-
-          button {
-            margin: 0;
-          }
-        }
-      }
-
-      #status {
-        width: 110px;
-        height: 30px;
-        font-size: .9em;
-        padding: 5px;
-        background: #e27803;
-        color: #fff; 
-      }
-    }
-
-    #total {
-      float: right;
-      margin: 15px;
+      margin: 15px 0 0 0;
       font-size: 1.5em;
       font-weight: bold;
+
+      #description {
+        float: left;
+        margin-right: $margin;
+      }
     }
   }
 }

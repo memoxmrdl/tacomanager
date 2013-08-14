@@ -4,11 +4,14 @@
     <h3><%= t('.Invitar usuarios') %></h3>
   </div>
   <div class="span7">
-    <%= form_for @users, url: dashboard_establishment_order_invitations_path do |f| %>
-      <div class="field">
-        <%= f.label "Get Email" %>
-         <%= f.check_box :email %>
-      </div>
+    <%= form_tag dashboard_establishment_order_invitations_path, method: :created  do %>
+      <% @users.each do |user| %>
+        <div class="field">
+        <%= check_box_tag 'user_ids[]', user.id %>
+        <%= user.nickname %>
+        </div>
+      <% end %>
+      <%= submit_tag 'Invitar' %>
     <% end %>
   </div>
 </div>

@@ -3,30 +3,29 @@
   <div class="content title-item">
     <h3><%= @establishment.name %></h3>
     <%= form_for @order, url: dashboard_establishment_orders_path(establishment_id: params[:id]) do |f| %>
-      <%= f.submit 'Ordenar', class: 'button' %>
+      <%= f.submit t('.order_to'), class: 'button' %>
     <% end %>
-    <%= link_to 'Agregar comida', new_dashboard_establishment_food_path(establishment_id: @establishment.id), class: 'button' %>
-    <%= link_to 'Editar', edit_dashboard_establishment_path, class: 'button' %>
+    <%= link_to t('.add_food'), new_dashboard_establishment_food_path(establishment_id: @establishment.id), class: 'button' %>
+    <%= link_to t('.edit'), edit_dashboard_establishment_path, class: 'button' %>
   </div>
   <p class="content">
-  Domicilio: <%= @establishment.address.full_address %></br>
-  Horarios: <%= @establishment.schedule %></br>
-  Telefonos: <%= @establishment.phone %>
+  <%= "#{t('.address')}: #{@establishment.address.full_address}" %></br>
+  <%= "#{t('.schedule')}: #{@establishment.schedule}" %></br>
+  <%= "#{t('.phones')}: #{@establishment.phone}" %>
   </p>
-  <div class="span6">
-    <h4 class="content menu">Menu:</h4>
+  <div class="span4">
+    <h4 class="content menu"<%= t('.menu') %></h4>
     <section id="foods">
       <%= display_foods t('.food_empty') %>
     </section>
   </div>
-  <div class="span4 ">
+  <div class="span7">
     <div class="gallery">
       <div id="thumbs">
         <% @establishment.images.each do |item| %>
           <%= image_tag item.image.url(:thumb) %>
         <% end %>
       </div>
-      <div class="clearfix"></div>
     </div>
     <%= render partial: 'dashboard/images/form', locals: { object: @establishment } %>
     <div id="map"></div>
@@ -36,11 +35,9 @@
 <% params = "#{@establishment.address.latitude}, #{@establishment.address.longitude}".html_safe %>
 document.addEventListener('page:change', function(){
   new App.Utilities.Map(<%= params %>);
-  new App.Utilities.CarouFredSel();
 });
 
 $(function(){
   new App.Utilities.Map(<%= params %>);
-  new App.Utilities.CarouFredSel();
 });
 </script>

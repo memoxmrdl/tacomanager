@@ -1,6 +1,8 @@
 <div class="food" data-food-id="<%= "#{food.id}" %>">
+  <div class="image"></div>
   <div class="detail">
     <h4><%= food.name %></h4>
+    <%= link_to t('.edit'), edit_dashboard_establishment_food_path(establishment_id: food.establishment.id, id: food.id) %>
     <div class="price"><%= number_to_currency(food.price, :unit => "$") %></div>
   </div>
 </div>

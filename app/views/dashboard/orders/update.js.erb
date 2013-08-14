@@ -3,8 +3,9 @@
     orders.removeClass('not_pay');
     orders.addClass('pay');
 
-    $('.destroy, .remove, #payment, #invited').remove();
-    $('.quantity').attr('disabled', 'disabled');
+    $('.destroy, .remove, .span4, .payment, .button_to').remove()
+    $('#payment, #invited').remove()
+    $('.quantity').attr('disabled', 'disabled')
 <% else %>
     new App.Utilities.MsgError("<%= @order.errors[:payment][0] %>")
 <% end %>

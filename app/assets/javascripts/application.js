@@ -3,6 +3,7 @@
 //= require turbolinks
 //= require jquery.carouFredSel
 //= require app
+//= require dashboard
 //= require map
 //= require gallery
 //= require order

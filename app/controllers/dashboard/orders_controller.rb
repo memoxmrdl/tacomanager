@@ -21,7 +21,6 @@ class Dashboard::OrdersController < DashboardController
     return redirect_to dashboard_establishments_path, alert: t('.not_found') unless @establishment
 
     @order = Order.new
-    @order.name = 'Nueva orden'
     @order.establishment = @establishment
     @order.user = current_identity.user
 
@@ -33,6 +32,10 @@ class Dashboard::OrdersController < DashboardController
   end
 
   def update
+    if params_order[:payment]
+      @order.user_id_payment = current_identity.user.id
+    end
+
     @order.update_attributes params_order
 
     respond_with @order
@@ -48,7 +51,7 @@ class Dashboard::OrdersController < DashboardController
   private
 
   def params_order
-    params.require(:order).permit(:name, :status, :payment)
+    params.require(:order).permit(:status, :payment)
   end
 
   def order_find_by_id

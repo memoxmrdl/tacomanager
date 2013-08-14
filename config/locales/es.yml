@@ -1,14 +1,28 @@
 es:
   not_have_foods: 'Orden no puede ser pagada por que no tiene pedidos'
   layouts:
+    dashboard:
+      home: 'Inicio'
+      new_order: 'Nuevo pedido'
+      establishments: 'Establecimientos'
     application:
       sign_in: 'Inicia sesíon con:'
 
   dashboard:
+    invitations:
+      create:
+        invited: 'La invitacion se realizo correctamente'
+    dashboard:
+      index:
+        unathorization: 'Necesita ser un usuario autentificado'
+        welcome: 'Bienvenido'
+        my_establishments: 'Mis establecimientos'
+        my_orders: 'Mis pedidos'
     orders:
       create:
         created: 'Su orden fue creada correctamente'
         info_invalid: 'El establecimiento no cumple con los requisitos para crear una orden'
+        error: 'Su orden no se pudo crear'
       show:
         not_found_establishment: 'No se encontro ningun establecimiento para esa orden'
         not_found_order: 'No se encontro ninguna orden'
@@ -18,6 +32,9 @@ es:
       update:
         failed: 'Operacion fallo o datos incorrectos'
     establishments:
+      update:
+        error: 'Surgio un error al actualizar'
+        updated: 'El establecimiento fue actualizado'
       edit:
         edit: 'Editar'
         update: 'Actualizar'
@@ -41,21 +58,35 @@ es:
         establishments: 'Establecimientos'
         empty: 'No hay ningun establecimiento'
       show:
+        address: 'Dirección'
+        schedule: 'Horario'
+        phones: 'Telefonos'
+        menu: 'Menu'
+        edit: 'Editar'
+        add_food: 'Agregar platillo'
+        order_to: 'Realizar un pedido'
         food_empty: 'No hay ningun platillo'
         not_found: 'No se encontro el establecimiento'
 
     foods:
+      food:
+        edit: 'Editar'
       new:
         new_food: 'Nuevo platillo'
         save: 'Guardar'
       create:
         error: 'Surgio un error al guardar'
         created: 'Se agrego nuevo platillo al establecimiento'
+      edit:
+        edit_food: 'Editar platillo'
+        update: 'Actualizar'
       form:
         name: 'Nombre'
         description: 'Descripcion'
         price: 'Precio'
         cancel: 'Cancelar'
+      update:
+        updated: 'El platillo se actualizo correctamente'
     images:
       form:
         add_image: 'Agregar'

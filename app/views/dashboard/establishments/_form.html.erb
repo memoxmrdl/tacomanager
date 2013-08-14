@@ -38,6 +38,6 @@
       <% end %>
 <div class="submit">
   <%= f.submit submit  %>
-  <%= link_to t('.cancel'), dashboard_establishments_path %>
+  <%= link_to t('.cancel'), (establishment.id.nil? ? dashboard_establishments_path : dashboard_establishment_path(id: establishment.id)) %>
 </div>
 <% end %>

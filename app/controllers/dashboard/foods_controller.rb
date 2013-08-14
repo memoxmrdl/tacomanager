@@ -29,12 +29,12 @@ class Dashboard::FoodsController < DashboardController
   end
 
   def edit
-    return redirect_to dashboard_establishment_foods_path, alert: 'not found' unless @food
+    return redirect_to dashboard_establishment_foods_path, alert: t('.not_found') unless @food
   end
 
   def update
     if @food.update_attributes params_food
-      return redirect_to dashboard_establishment_foods_path, notice: 'updated'
+      return redirect_to dashboard_establishment_path(id: params[:establishment_id]), notice: t('.updated')
     end
 
     flash.now[:alert] = 'error'
