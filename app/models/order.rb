@@ -1,12 +1,12 @@
 class Order < ActiveRecord::Base
+  before_save :order_secuency
+
   belongs_to :user
   belongs_to :establishment
   has_many :order_details, dependent: :delete_all
   has_many :users, through: :order_details
 
   validate :check_payments, on: :update
-  validates_presence_of :name
-  before_save :order_secuency
 
   def total
     order_details.sum(:subtotal)
@@ -15,13 +15,17 @@ class Order < ActiveRecord::Base
   private
 
   def check_payments
-    unless order_details.where(payment: false).any?
+    unless order_details.where(payment: false).any? || order_details.where(payment: true).any?
       errors.add(:payment, I18n.t('.not_have_foods'))
       self.payment = false
     end
   end
 
+  def get_last_id
+    !Order.last ? 0 : Order.last.id
+  end
+
   def order_secuency
-    self.name = "Orden ##{Order.last.try(id).to_i + 1}"
+    self.name = "Orden ##{get_last_id + 1}"
   end
 end
