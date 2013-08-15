@@ -1,5 +1,6 @@
 class Dashboard::EstablishmentsController < DashboardController
-  before_filter :establishment_find_by_id, only: [:show, :edit, :update]
+  before_filter :establishment_find_by_id, only: :show
+  before_filter :is_mine?, only: [:edit, :update]
 
   def index
     @establishments = Establishment.all
@@ -15,6 +16,7 @@ class Dashboard::EstablishmentsController < DashboardController
 
     @order = Order.new
     @foods = Food.where(establishment_id: params[:id])
+    @comment = Comment.new
   end
 
   def create
@@ -31,7 +33,6 @@ class Dashboard::EstablishmentsController < DashboardController
   end
 
   def edit
-    return redirect_to dashboard_establishments_path, alert: t('.not_found') unless @establishment
   end
 
   def update
@@ -59,6 +60,12 @@ class Dashboard::EstablishmentsController < DashboardController
   end
 
   private
+
+  def is_mine?
+    @establishment = Establishment.is_mine? params[:id], current_identity.user
+
+    return redirect_to dashboard_establishments_path, alert: t('.not_access') unless @establishment
+  end
 
   def establishment_find_by_id
     @establishment = Establishment.find_by_id params[:id]

@@ -9,10 +9,6 @@ class Dashboard::ImageController < DashboardController
     redirect_to dashboard_establishment_path(id: params[:establishment][:id])
   end
 
-  def destroy
-
-  end
-
   private
 
   def params_establishment

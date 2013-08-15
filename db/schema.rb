@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130813171104) do
+ActiveRecord::Schema.define(version: 20130815092200) do
 
   create_table "addresses", force: true do |t|
     t.string   "street"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20130813171104) do
     t.text     "comment",          null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   add_index "comments", ["establishment_id"], name: "index_comments_on_establishment_id", using: :btree
@@ -93,7 +94,8 @@ ActiveRecord::Schema.define(version: 20130813171104) do
     t.integer  "food_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "payment",    default: false
+    t.boolean  "payment",         default: false
+    t.integer  "user_id_payment"
   end
 
   add_index "order_details", ["food_id"], name: "index_order_details_on_food_id", using: :btree
@@ -101,7 +103,7 @@ ActiveRecord::Schema.define(version: 20130813171104) do
   add_index "order_details", ["user_id"], name: "index_order_details_on_user_id", using: :btree
 
   create_table "orders", force: true do |t|
-    t.string   "name"
+    t.string   "name",             null: false
     t.integer  "user_id"
     t.integer  "establishment_id"
     t.datetime "created_at"

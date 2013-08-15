@@ -5,19 +5,21 @@
     <h3><%= @order.name %></h3>
     <div class="option">
       <ul>
-        <li><%= link_to 'Invitar', new_dashboard_establishment_order_invitation_path(order_id: @order.id), id: 'invited', class: 'button' %></li>
-        <li><%= button_tag 'Pagar orden', id: 'payment', class: 'button', data: { id: @order.id } %></li>
-        <li><%= select_tag 'status', options_status(@order.status), id: 'status', class: 'button' %></li>
-        <li><%= button_to "Cancelar orden", dashboard_establishment_order_path, method: :delete, class: 'button' %></li>
+        <li><%= link_to 'Invitar', new_dashboard_establishment_order_invitation_path(order_id: @order.id), id: 'invited', class: 'button' unless order_payment? %></li>
+        <li><%= button_tag 'Pagar orden', id: 'payment', class: 'button', data: { id: @order.id } unless order_payment? %></li>
+        <%= display_change_status @order %>
+        <%= display_cancel_order @order unless order_payment? %>
       </ul>
     </div>
   </div>
+  <% unless order_payment? %>
   <div class="span4">
     <h4 class="content menu"><%= @establishment.name %> :: Menu:</h4>
     <section id="foods" data-establishment-id="<%= @establishment.id %>">
-      <%= display_foods t('.food_empty') %>
+      <%= display_foods t('.food_empty'), { partial: 'dashboard/foods/food_order', collection: @foods  } %>
     </section>
   </div>
+  <% end%>
   <div class="span7">
     <h4 class="content order_detail">Orden detallado:</h4>
     <section id="order_details">
@@ -31,20 +33,12 @@
     </div>
   </div>
 </section>
-<% content_for :active_utilities_order do %>
-  new App.Utilities.Order();
-<% end %>
-<% content_for :disable_utilities_order do %>
-  $('.destroy, .remove, .span4, .payment, .button_to').remove()
-  $('#payment, #invited').remove()
-  $('.quantity').attr('disabled', 'disabled')
-<% end %>
 <script type="text/javascript">
 document.addEventListener('page:change', function(){
-  <%= render_js(@order.payment) %>
+  new App.Utilities.Order();
 });
 
 $(function(){
-  <%= render_js(@order.payment) %>
+  new App.Utilities.Order();
 });
 </script>

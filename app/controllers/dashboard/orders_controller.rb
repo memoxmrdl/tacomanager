@@ -1,12 +1,10 @@
 class Dashboard::OrdersController < DashboardController
-  before_filter :order_find_by_id, only: [:show, :destroy, :update]
+  before_filter :order_find_by_id, only: [:show, :update, :destroy]
   before_filter :check_info_establishment, only: :create
 
   respond_to :js, only: :update
 
   def show
-    return redirect_to dashboard_root_path, alert: t('.not_found_order') unless @order
-
     @establishment = Establishment.find_by_id(params[:establishment_id])
 
     return redirect_to dashboard_establishments_path, alert: t('.not_found_establishment') unless @establishment
@@ -28,13 +26,11 @@ class Dashboard::OrdersController < DashboardController
       return redirect_to dashboard_establishment_order_path(id: @order.id), notice: t('.created')
     end
 
-    redirect_to dashboard_establishments_path, alert: t('.error')
+    redirect_to dashboard_establishment_order_path(id: @order.id), alert: t('.error')
   end
 
   def update
-    if params_order[:payment]
-      @order.user_id_payment = current_identity.user.id
-    end
+    @order.user_id_payment = current_identity.user.id if params[:order][:payment]
 
     @order.update_attributes params_order
 
@@ -56,11 +52,13 @@ class Dashboard::OrdersController < DashboardController
 
   def order_find_by_id
     @order = Order.find_by_id params[:id]
+
+    return redirect_to dashboard_root_path, alert: t('.not_found_order') unless @order
   end
 
   def check_info_establishment
     @establishment = Establishment.find_by_id params[:establishment_id]
 
-    return redirect_to dashboard_establishments_path, alert: t('.info_invalid') unless @establishment.info_valid?
+    return redirect_to dashboard_establishment_path(id: @establishment.id), alert: t('.info_invalid') unless @establishment.info_valid?
   end
 end

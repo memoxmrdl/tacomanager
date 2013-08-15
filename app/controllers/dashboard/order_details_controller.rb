@@ -14,6 +14,7 @@ class Dashboard::OrderDetailsController < DashboardController
 
   def update
     @order_detail = OrderDetail.find_by_id params[:id]
+    @order_detail.user_id_payment = current_identity.user.id
     @order_detail.update_attributes order_detail_params
 
     respond_with @order_detail

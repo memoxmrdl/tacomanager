@@ -99,10 +99,17 @@
       margin-bottom: 10px;
     }
 
+    .image {
+      float: left;
+      width: 48px;
+      height: 48px;
+      margin: 10px 0 10px 10px;
+    }
+
     .price {
       float: right;
       font-size: .8em;
-      margin: 5px;
+      margin: 10px;
       font-weight: bold;
     }
 

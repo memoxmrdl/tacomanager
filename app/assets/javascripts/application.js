@@ -8,4 +8,5 @@
 //= require gallery
 //= require order
 //= require msgerror
+//= require vote
 

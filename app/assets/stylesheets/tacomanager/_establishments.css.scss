@@ -8,11 +8,63 @@
 
     h3 {
       font-size: 2em !important;
+
+      .score {
+        margin-top: 10px;
+
+        #good, #bad {
+          padding-left: 9px;
+          cursor: pointer;
+          width: 32px;
+          height: 32px;
+          margin: 0;
+          float: left;
+          font-size: .8em !important;
+        }
+
+        #bad { background-color: #FF0000;  }
+
+        #good {
+          background-color: green;
+          margin: 0 10px;
+        }
+      }
     }
 
     #new_order {
       float: right;
       margin: 0;
+    }
+  }
+
+  h5 {
+    margin-bottom: 10px;
+    font-size: 1em;
+  }
+
+  .comments {
+    background-color: #fff;
+    padding: 10px;
+    overflow: hidden;
+
+    .comment {
+      background-color: #eee;
+
+      p {
+        margin: 0;
+        margin-bottom: 10px;
+        padding: 5px;
+        font-size: .8em;
+      }
+    }
+  }
+
+  .new_comment {
+    margin: 5px 0;
+
+    input[type='text'] {
+      width: 470px;
+      height: 30px;
     }
   }
 
@@ -83,8 +135,7 @@
       float: left;
       width: 48px;
       height: 48px;
-      background-color: #ddd;
-      margin: 10px;
+      margin: 10px 0 10px 10px;
     }
 
     .price {

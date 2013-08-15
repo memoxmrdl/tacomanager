@@ -2,6 +2,7 @@ es:
   not_have_foods: 'Orden no puede ser pagada por que no tiene pedidos'
   layouts:
     dashboard:
+      logout: 'Cerrar sesión'
       home: 'Inicio'
       new_order: 'Nuevo pedido'
       establishments: 'Establecimientos'
@@ -35,9 +36,11 @@ es:
       update:
         error: 'Surgio un error al actualizar'
         updated: 'El establecimiento fue actualizado'
+        not_access: 'No es posible actualizar este establecimiento'
       edit:
         edit: 'Editar'
         update: 'Actualizar'
+        not_access: 'No es posible editar este establecimiento'
       new:
         new: 'Nuevo establecimiento'
         save: 'Guardar'

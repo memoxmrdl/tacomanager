@@ -8,6 +8,9 @@ class Order < ActiveRecord::Base
 
   validate :check_payments, on: :update
 
+  scope :my_current_orders,
+    -> (user) { where(user: user).order('created_at DESC') }
+
   def total
     order_details.sum(:subtotal)
   end
@@ -22,10 +25,10 @@ class Order < ActiveRecord::Base
   end
 
   def get_last_id
-    !Order.last ? 0 : Order.last.id
+    !Order.last ? 1 : Order.last.id
   end
 
   def order_secuency
-    self.name = "Orden ##{get_last_id + 1}"
+    self.name = "Orden ##{get_last_id}"
   end
 end
