@@ -1,0 +1,18 @@
+<div class="content">
+  <%= display_alert %>
+  <%= display_notice %>
+  <div class="content">
+    <h3><%= t('.users') %></h3>
+  </div>
+  <div class="span7">
+    <%= form_tag dashboard_users_path, method: :put  do %>
+      <% @users.each do |user| %>
+        <div class="field">
+        <%= check_box_tag 'user_ids[]', user.id %>
+        <%= user.nickname %>
+        </div>
+      <% end %>
+      <%= submit_tag t('.blocked'), class: 'button' %>
+    <% end %>
+  </div>
+</div>

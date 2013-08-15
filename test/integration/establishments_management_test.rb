@@ -14,11 +14,11 @@ feature 'EstablishmentsManagement Feature Test' do
       fill_in 'establishment_name', with: 'Tacos el gordo'
       fill_in 'establishment_schedule', with: '9:00am - 10:00pm'
       fill_in 'establishment_phone', with: '32 4 2459'
-      fill_in 'establishment_address_street', with: 'Av. Constitucion #45'
-      fill_in 'establishment_address_city', with: 'Colima'
-      fill_in 'establishment_address_state', with: 'Colima'
-      fill_in 'establishment_address_country', with: 'Mexico'
-      fill_in 'establishment_address_zip_code', with: '28017'
+      fill_in 'establishment_address_attributes_street', with: 'Av. Constitucion #45'
+      fill_in 'establishment_address_attributes_city', with: 'Colima'
+      fill_in 'establishment_address_attributes_state', with: 'Colima'
+      fill_in 'establishment_address_attributes_country', with: 'Mexico'
+      fill_in 'establishment_address_attributes_zip_code', with: '28017'
     end
 
     click_button 'Guardar'
@@ -39,10 +39,11 @@ feature 'EstablishmentsManagement Feature Test' do
   scenario 'user would see a establishment' do
     login_user
 
-    establishment = establishments(:one)
+    testing = Establishment.create name: 'Test food', user_id: 100
 
     visit '/dashboard/establishments'
+    save_and_open_page
 
-    page.must_have_selector ".establishment[data-establishment-id='#{establishment.id}']", text: establishment.name
+    page.must_have_selector ".establishment[data-establishment-id='#{testing.id}']", text: testing.name
   end
 end

@@ -34,14 +34,20 @@ class Order
         data: { order_details: { quantity: $(@).val() }}
       e.stopImmediatePropagation()
 
-    $('#status').change ->
+    $('#status').change (e) ->
       status_id = $(@).find('option:selected').attr('value')
       $.ajax
         url: document.URL
         type: 'PUT'
         data: { order: { status: status_id } }
+      e.stopImmediatePropagation()
 
-
+    $('#payment').on 'click', (e) ->
+      $.ajax
+        url: document.URL
+        type: 'PUT'
+        data: { order: { payment: true } }
+      e.stopImmediatePropagation()
 
 
 App.Utilities.Order = Order

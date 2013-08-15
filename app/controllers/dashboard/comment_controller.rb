@@ -1,15 +1,13 @@
 class Dashboard::CommentController < DashboardController
-  respond_to :js
-
   def create
-    establishment = Establishment.find_by_id params[:establishment_id]
+    @establishment = Establishment.find_by_id params[:establishment_id]
 
     @comment = Comment.new comment_params
-    @comment.establishment = establishment
+    @comment.establishment = @establishment
+    @comment.user_id = current_identity.user.id
+    @comment.save
 
-    @comment = nil unless @comment.save
-
-    respond_with @comment
+    redirect_to dashboard_establishment_path(id: @establishment.id) 
   end
 
   private

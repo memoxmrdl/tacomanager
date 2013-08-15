@@ -4,7 +4,7 @@
 }
 
 body {
-  font-family: 'Arial', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   background: image-url('background.jpg') repeat;
   margin: 0;
   overflow: auto;
@@ -111,22 +111,23 @@ form {
   margin-left: $margin;
   margin-bottom: $margin;
   background-color: #1d9e22;
-  padding: 5px 10px;
+  padding: 10px 20px;
   color: #fff;
   font-weight: bold;
-  font-size: .8em;
+  font-size: .9em;
   border-radius: 3px;
   width: 612px;
 }
 
 .alert {
   margin-left: $margin;
+  margin-right: $margin;
   margin-bottom: $margin;
   background-color: #ed595e;
-  padding: 5px 10px;
+  padding: 10px 20px;
   color: #fff;
   font-weight: bold;
-  font-size: .8em;
+  font-size: .9em;
   border-radius: 3px;
   width: 612px;
 }
@@ -142,7 +143,6 @@ form {
   height: 53px;
   position: absolute;
   width: 100%;
-  opacity: 0.6;
   color: #fff;
   display: none;
   padding: 13px;

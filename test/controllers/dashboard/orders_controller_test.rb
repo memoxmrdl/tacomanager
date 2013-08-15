@@ -2,9 +2,8 @@ require "test_helper"
 
 describe Dashboard::OrdersController do
   let(:order) { orders(:one) }
-  let(:params) { { name: 'Tragones', establishment_id: 100 } }
+  let(:params) { { name: 'Tragones' } }
   let(:establishment) { establishments(:one) }
-
 
   describe 'POST create' do
     it 'should create a order' do
@@ -30,6 +29,9 @@ describe Dashboard::OrdersController do
   describe 'GET show' do
     it 'should display a order' do
       login_user
+
+      establishment.foods.first.image =  Image.new image: File.new(Rails.root + 'test/fixtures/images/fixtures.jpg')
+      establishment.save
 
       get :show, establishment_id: establishment.id, id: order.id
 
@@ -79,7 +81,7 @@ describe Dashboard::OrdersController do
 
       delete :destroy, establishment_id: establishment.id, id: 203
 
-      must_redirect_to dashboard_establishments_path
+      must_redirect_to dashboard_root_path
       flash[:alert].wont_be_nil
     end
   end

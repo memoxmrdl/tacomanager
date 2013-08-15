@@ -8,17 +8,68 @@
 
     h3 {
       font-size: 2em !important;
+
+      .score {
+        margin-top: 10px;
+
+        #good, #bad {
+          padding-left: 9px;
+          cursor: pointer;
+          width: 32px;
+          height: 32px;
+          margin: 0;
+          float: left;
+          font-size: .8em !important;
+        }
+
+        #bad { background-color: #FF0000;  }
+
+        #good {
+          background-color: green;
+          margin: 0 10px;
+        }
+      }
     }
 
-    #new_order {
+    form {
       float: right;
-      margin: 0;
+      margin: 0 10px 0 0;
+    }
+  }
+
+  h5 {
+    margin-bottom: 10px;
+    font-size: 1em;
+  }
+
+  .comments {
+    background-color: #fff;
+    padding: 10px;
+    overflow: hidden;
+
+    .comment {
+      background-color: #eee;
+
+      p {
+        margin: 0;
+        margin-bottom: 10px;
+        padding: 5px;
+        font-size: .8em;
+      }
+    }
+  }
+
+  .new_comment {
+    margin: 5px 0;
+
+    input[type='text'] {
+      width: 470px;
+      height: 30px;
     }
   }
 
   .content {
     h3 {
-      float: left;
       margin: 0;
       font-size: 1.5em;
     }
@@ -49,7 +100,6 @@
     width: 100%;
   }
 
-
   .establishment {
     float: left;
     width: 204px;
@@ -78,27 +128,42 @@
 
   .food {
     @extend .establishment;
-    width: 213px;
-    
+    width: 270px;
+
+    .image {
+      float: left;
+      width: 48px;
+      height: 48px;
+      margin: 10px 0 10px 10px;
+    }
+
     .price {
       float: right;
-      font-size: .8em;
-      margin: 5px;
+      font-size: .7em;
+      margin: 10px;
       font-weight: bold;
+    }
+
+    a {
+      text-decoration: none;
+      font-size: .5em;
+      float: right;
+      margin: 10px;
     }
 
     .detail {
       width: 100%;
 
       h4 {
-        font-size: .8em;
+        font-size: .7em;
+        width: 125px;
       }
     }
   }
 
   #map {
-    border-radius: 3px;
-    width: 328px;
+    border-radius: 5px;
+    width: 100%;
     height: 200px;
   }
 
@@ -107,16 +172,24 @@
   }
 
   .gallery {
-    width: 224px;
+    width: 100%;
     background-color: #fff;
-    margin-top: ($margin*2);
+    border-radius: 5px;
 
-    img {
-      margin: 7px;
-      display: block;
-      float: left;
-      padding: 9px;
-      border: 1px solid #ccc;
+    #thumbs {
+      width: 100%;
+      height: auto;
+      padding: 10px;
+      overflow: hidden;
+
+      img {
+        margin: 0 10px 10px 0;
+        display: block;
+        float: left;
+        padding: 3px;
+        border: 1px solid #ccc;
+      }
+
     }
 
     .clearfix {
@@ -124,4 +197,5 @@
       float: left;
     }
   }
+
 }
