@@ -2,21 +2,22 @@ header {
   height: 68px;
 
   .menu {
+    margin-left: 0;
     ul {
       padding-left: 0px;
-      font-size: 0.9em;
+      font-size: 1em;
+      font-weight: 400;
       list-style-type: none;
       margin-top: $margin;
       float: left;
 
       li {
         float: left;
-        font-weight: bold;
-        margin-right: ($margin / 2);
+        margin-right: ($margin / 4);
 
         &:after {
           content: '|';
-          margin-left: ($margin / 2);
+          margin-left: ($margin / 4);
         }
 
         &:last-child:after {
@@ -35,30 +36,85 @@ header {
     width: 440px;
     height: 126px;
   }
- }
 
-  .bar-dashboard {
-    padding-top: ($padding*3);
-    padding-bottom: ($padding*2);
-    width: 100%;
-    height: auto;
-    background-color: #eee;
+  .user_avatar {
+    float: left;
+    width: 48px;
+    height: 48px;
+    margin-top: 10px;
+
   }
+    .logout {
+      font-size: .8em;
+      position: absolute;
+      margin-top: 22px;
+      margin-left: 10px;
+      font-weight: 300px;
+    }
+    
+}
 
-.dashboard {
+.bar-dashboard {
+  padding-top: ($padding*3);
+  padding-bottom: ($padding*2);
+  width: 100%;
+  height: auto;
+  background-color: #eee;
+
+  .dashboard {
+    h3 {
+      font-size: 2em;
+      margin: 0 0 20px 20px;
+    }
+
+    h4 {
+      margin: 0 0 10px 0;
+      font-size: 1.2em;
+    }
+
+    .establishments, .orders {
+      padding: 15px;
+      width: 100%;
+      background-color: #fff;
+      height: 350px;
+      border-radius: 5px;
+      overflow-y: scroll;
+
+      .establishment {
+        width: 369px;
+      }
+
+      .order {
+        float: left;
+        width: 197px;
+        background-color: #eee;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        border-radius: 3px;
+
+        .not-payment {
+          color: blue;
+        }
+
+        .payment {
+          color: #000;
+        }
+
+        h4 {
+          font-size: 1em;
+          font-weight: 300;
+          margin: 10px;
+
+          a { text-decoration: none }
+        }
+      }
+    }
+  }
+}
+
+.users {
   h3 {
-    margin: 0 $margin;
-  }
-
-  .column {
-    h2 {
-      font-size: 1.3em;
-      background-color: #fec333;
-      text-align: center;
-    }
-
-    &:last-child(2) {
-    }
+    font-size: 1.2em;
   }
 }
 

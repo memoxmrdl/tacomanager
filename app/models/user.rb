@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   has_many :authorizations
+  has_many :establishments
   has_one :image
+  has_many :comments
 
   has_many :order_details
   has_many :orders, through: :order_details

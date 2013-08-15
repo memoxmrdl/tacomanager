@@ -1,79 +1,9 @@
-require "test_helper"
-
-describe Dashboard::EstablishmentsController do
-  let(:establishment) {
-    Establishment.create name: 'La puerta negra'
-  }
-
-  describe 'GET index' do
-    it 'should display all establishments for logged user' do
-      login_user
-
-      get :index
-
-      must_response_with :success
-      must_render_template :index
-    end
-
-    it 'should not display all establishments when not logged user' do
-      get :index
-
-      must_redirect_to root_path
-      flash[:alert].wont_be_nil
-    end
-  end
-
-  describe 'GET new' do
-    it 'should display new form establishment for logged user' do
-      login_user
-
-      get :new
-
-      must_response_with :success
-      must_render_template :new
-    end
-
-    it 'should redirect to establishment whent not logged user' do
-      get :new
-
-      must_redirect_to root_path
-      flash[:alert].wont_be_nil
-    end
-  end
-
-  describe 'GET show' do
-    it 'should show establishment for that all users to be logged' do
-      login_user
-
-      get :show, id: establishment.id
-
-      must_response_with :success
-      must_render_template :show
-    end
-
-    it 'should not show establishment when not logged user' do
-      get :show, id: establishment.id
-
-      must_redirect_to root_path
-      flash[:alert].wont_be_nil
-    end
-  end
-
-  describe 'GET edit' do
-    it 'should edit a establishment when it is that logged user' do
-      login_user
-
-      get :edit, id: establishment.id
-
-      must_response_with :success
-      must_render_template :edit
-    end
-
-    it 'should not edit a establishment when not logged user' do
-      get :edit, id: establishment.id
-
-      must_redirect_to root_path
-      flash[:alert].wont_be_nil
-    end
-  end
-end
+<div class="content">
+  <%= display_alert %>
+  <div class="content">
+    <h3><%= t('.edit') %></h3>
+  </div>
+  <div class="span7">
+    <%= render partial: 'form', locals: { establishment: @establishment, address: @address , url: dashboard_establishment_path(id: @establishment.id), submit: t('.update') } %>
+  </div>
+</div>

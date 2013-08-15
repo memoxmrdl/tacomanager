@@ -1,0 +1,3 @@
+<div class="order">
+  <h4><%= link_to order.name, dashboard_establishment_order_path(establishment_id: order.establishment.id, id: order.id), class: order.payment? ? 'payment' : 'not-payment' %></h4>
+</div>

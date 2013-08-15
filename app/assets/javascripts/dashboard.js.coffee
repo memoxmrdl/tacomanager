@@ -1,3 +1,10 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+class HideMessages
+  constructor: ->
+    window.setTimeout @items, 1500
+
+  items: ->
+    $('.alert, .notice').fadeOut 'slow', ->
+     $(@).remove();
+
+
+App.Utilities.HideMessages = HideMessages

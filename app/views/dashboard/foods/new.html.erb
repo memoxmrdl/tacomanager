@@ -4,6 +4,6 @@
     <h3><%= t('.new_food') %></h3>
   </div>
   <div class="span7">
-    <%= render partial: 'form', locals: { food: @food, submit: t('.save')  } %>
+    <%= render partial: 'form', locals: { food: @food, url: dashboard_establishment_foods_path, submit: t('.save')  } %>
   </div>
 </div>

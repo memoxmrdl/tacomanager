@@ -3,8 +3,12 @@
 
 one:
   id: 100
+  user_id: 100
+  schedule: '9:00 - 10:00'
+  phone: '312343535'
   name: 'Don bigotes'
 
-dos:
+two:
   id: 101
+  user_id: 100
   name: 'Don bigotes'

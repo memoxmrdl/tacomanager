@@ -133,7 +133,7 @@ describe Dashboard::FoodsController do
 
       get :update, establishment_id: establishment.id, id: food.id, food: params
 
-      must_redirect_to dashboard_establishment_foods_path
+      must_redirect_to dashboard_establishment_path(id: establishment.id)
       flash[:notice].wont_be_nil
     end
 
