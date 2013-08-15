@@ -14,9 +14,6 @@ class Dashboard::OrdersController < DashboardController
   end
 
   def create
-    @establishment = Establishment.find_by_id params[:establishment_id]
-
-    return redirect_to dashboard_establishments_path, alert: t('.not_found') unless @establishment
 
     @order = Order.new
     @order.establishment = @establishment
@@ -59,6 +56,7 @@ class Dashboard::OrdersController < DashboardController
   def check_info_establishment
     @establishment = Establishment.find_by_id params[:establishment_id]
 
+    return redirect_to dashboard_establishments_path, alert: t('.not_found') unless @establishment
     return redirect_to dashboard_establishment_path(id: @establishment.id), alert: t('.info_invalid') unless @establishment.info_valid?
   end
 end

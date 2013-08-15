@@ -1,9 +1,9 @@
 class Establishment < ActiveRecord::Base
-  has_one :address
-  has_many :foods
-  has_many :orders
-  has_many :comments
-  has_many :images
+  has_one :address, dependent: :destroy
+  has_many :foods, dependent: :destroy
+  has_many :orders, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :images, dependent: :destroy
   belongs_to :user
 
   acts_as_votable
@@ -21,7 +21,7 @@ class Establishment < ActiveRecord::Base
     def is_mine?(id, user)
       begin
         where(user_id: user.id).find(id)
-      rescue
+      rescue ActiveRecord::RecordNotFound
         nil
       end
     end

@@ -103,7 +103,7 @@ ActiveRecord::Schema.define(version: 20130815092200) do
   add_index "order_details", ["user_id"], name: "index_order_details_on_user_id", using: :btree
 
   create_table "orders", force: true do |t|
-    t.string   "name",             null: false
+    t.string   "name"
     t.integer  "user_id"
     t.integer  "establishment_id"
     t.datetime "created_at"

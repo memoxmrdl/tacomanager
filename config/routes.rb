@@ -15,6 +15,9 @@ Tacomanager::Application.routes.draw do
           resources :order_details, only: [:create, :update, :destroy]
         end
       end
+
+      get '/users', to: 'users#index'
+      put '/users', to: 'users#update'
       resources :image, only: [:create, :destroy]
     end
 

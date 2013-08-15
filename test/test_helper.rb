@@ -61,6 +61,10 @@ class Capybara::Rails::TestCase
   def setup
     User.destroy_all
     Authorization.destroy_all
+    Food.destroy_all
+    OrderDetail.destroy_all
+    Establishment.destroy_all
+    Address.destroy_all
 
     Warden.test_reset!
     Capybara.reset_sessions!

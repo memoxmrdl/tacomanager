@@ -9,6 +9,11 @@
         <div id="bad" data-establishment-id="<%= @establishment.id %>"><%= @establishment.dislikes.size %></div>
       </div>
     </h3>
+    <% if current_identity.user.admin? %>
+      <%= form_for dashboard_establishment_path(establishment_id: params[:id]), method: :delete, class: 'destroyed'  do |f| %>
+        <%= f.submit t('.delete'), class: 'button' %>
+      <% end %>
+    <% end%>
     <%= form_for @order, url: dashboard_establishment_orders_path(establishment_id: params[:id]) do |f| %>
       <%= f.submit t('.order_to'), class: 'button' %>
     <% end %>

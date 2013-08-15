@@ -10,7 +10,15 @@ es:
       sign_in: 'Inicia sesíon con:'
 
   dashboard:
+    users:
+      update:
+        updated: 'Se bloquearon algunos usuarios'
+      index:
+        users: 'Usuarios'
+        blocked: 'Bloquear'
     invitations:
+      new:
+        invite: 'Invitar'
       create:
         invited: 'La invitacion se realizo correctamente'
     dashboard:
@@ -61,6 +69,7 @@ es:
         establishments: 'Establecimientos'
         empty: 'No hay ningun establecimiento'
       show:
+        delete: 'Eliminar'
         address: 'Dirección'
         schedule: 'Horario'
         phones: 'Telefonos'

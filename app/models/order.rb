@@ -25,7 +25,7 @@ class Order < ActiveRecord::Base
   end
 
   def get_last_id
-    !Order.last ? 1 : Order.last.id
+    !Order.last ? 1 : (Order.last.id + 1)
   end
 
   def order_secuency

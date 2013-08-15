@@ -49,6 +49,9 @@ describe Dashboard::EstablishmentsController do
     it 'should show establishment for that all users to be logged' do
       login_user
 
+      Image.create establishment_id: establishment.id, image: File.new(Rails.root + 'test/fixtures/images/fixtures.jpg')
+      Image.create food_id: establishment.foods.first.id, image: File.new(Rails.root + 'test/fixtures/images/fixtures.jpg')
+
       get :show, id: establishment.id
 
       must_response_with :success
@@ -119,7 +122,7 @@ describe Dashboard::EstablishmentsController do
 
       put :update, id: establishment.id, establishment: params
 
-      must_redirect_to dashboard_establishments_path
+      must_redirect_to dashboard_establishment_path(id: establishment.id)
       flash[:notice].wont_be_nil
     end
 

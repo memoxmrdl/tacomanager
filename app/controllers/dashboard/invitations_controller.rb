@@ -1,6 +1,6 @@
 class Dashboard::InvitationsController < DashboardController
   def new
-    @users = User.all
+    @users = User.where.not(id: current_identity.user.id)
   end
 
   def create

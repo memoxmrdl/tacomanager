@@ -30,6 +30,9 @@ describe Dashboard::OrdersController do
     it 'should display a order' do
       login_user
 
+      establishment.foods.first.image =  Image.new image: File.new(Rails.root + 'test/fixtures/images/fixtures.jpg')
+      establishment.save
+
       get :show, establishment_id: establishment.id, id: order.id
 
       must_response_with :success
@@ -78,7 +81,7 @@ describe Dashboard::OrdersController do
 
       delete :destroy, establishment_id: establishment.id, id: 203
 
-      must_redirect_to dashboard_establishments_path
+      must_redirect_to dashboard_root_path
       flash[:alert].wont_be_nil
     end
   end

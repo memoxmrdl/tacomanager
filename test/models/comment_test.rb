@@ -3,11 +3,13 @@ require "test_helper"
 describe Comment do
   let(:comment) { Comment.new }
   let(:establishment) { establishments(:one) }
+  let(:user) { users(:user) }
 
   describe 'Validations' do
     it 'must be valid' do
       comment.comment = 'this is food good'
       comment.establishment = establishment
+      comment.user = user
 
       comment.valid?.must_equal true
     end

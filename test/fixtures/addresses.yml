@@ -8,6 +8,8 @@ one:
   state: 'Colima'
   country: 'Mexico'
   zip_code: '29120'
+  latitude: 11212
+  longitude: 123123
   establishment_id: 100
 
 two:
@@ -17,4 +19,6 @@ two:
   state: 'Colima'
   country: 'Mexico'
   zip_code: '28017'
-  establishment_id: 1
+  latitude: ''
+  longitude: ''
+  establishment_id: 101

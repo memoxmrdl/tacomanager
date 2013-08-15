@@ -8,8 +8,7 @@ describe Dashboard::CommentController do
 
     xhr :post, :create, establishment_id: 100, comment: params
 
-    must_response_with :success
-    must_render_template :create
+    must_response_with :redirect
   end
 
   it 'should create a comment with invalid params' do
@@ -18,7 +17,6 @@ describe Dashboard::CommentController do
     invalid_params = params.merge({ comment: '' })
     xhr :post, :create, establishment_id: 100, comment: invalid_params
 
-    must_response_with :success
-    must_render_template :create
+    must_response_with :redirect
   end
 end
