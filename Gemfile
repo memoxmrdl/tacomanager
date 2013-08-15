@@ -6,6 +6,10 @@ gem 'rails', '4.0.0'
 gem 'pg'
 gem 'puma'
 
+group :production do
+  gem 'rails_12factor'
+end
+
 gem 'paperclip', git: 'git://github.com/thoughtbot/paperclip.git', branch: 'rails-4'
 gem 'warden', '~> 1.2.1'
 gem 'omniauth-github'
