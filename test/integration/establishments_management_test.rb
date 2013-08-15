@@ -39,11 +39,11 @@ feature 'EstablishmentsManagement Feature Test' do
   scenario 'user would see a establishment' do
     login_user
 
-    establishment = establishments(:one)
+    testing = Establishment.create name: 'Test food', user_id: 100
 
     visit '/dashboard/establishments'
     save_and_open_page
 
-    page.must_have_selector ".establishment[data-establishment-id='#{establishment.id}']", text: establishment.name
+    page.must_have_selector ".establishment[data-establishment-id='#{testing.id}']", text: testing.name
   end
 end
