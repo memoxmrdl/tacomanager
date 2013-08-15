@@ -1,0 +1,7 @@
+<div class="food" data-food-id="<%= "#{food_order.id}" %>">
+  <%= image_tag food_order.image.image.url(:thumb), class: 'image' %>
+  <div class="detail">
+    <h4><%= food_order.name %></h4>
+    <div class="price"><%= number_to_currency(food_order.price, :unit => "$") %></div>
+  </div>
+</div>

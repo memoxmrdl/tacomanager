@@ -11,6 +11,7 @@ class Dashboard::FoodsController < DashboardController
 
   def new
     @food = Food.new
+    @food.build_image
   end
 
   def create
@@ -18,7 +19,7 @@ class Dashboard::FoodsController < DashboardController
 
     return redirect_to dashboard_establishment_foods_path, alert: t('.not_found') unless @establishment
 
-    @food = Food.new params_food
+    @food = Food.new params_food.except(:image)
     @food.image = Image.new image: params[:food][:image]
     @food.establishment = @establishment
 
@@ -33,11 +34,13 @@ class Dashboard::FoodsController < DashboardController
   end
 
   def update
-    if @food.update_attributes params_food
+    @food.image.update_attribute(:image, params[:food][:image]) if params[:food][:image]
+
+    if @food.update_attributes params_food.except(:image)
       return redirect_to dashboard_establishment_path(id: params[:establishment_id]), notice: t('.updated')
     end
 
-    flash.now[:alert] = 'error'
+    flash.now[:alert] = @food.errors.inspect
     render :edit
   end
 
@@ -54,6 +57,6 @@ class Dashboard::FoodsController < DashboardController
   end
 
   def params_food
-    params.require(:food).permit :name, :price, :description
+    params.require(:food).permit :name, :price, :description, :image
   end
 end
