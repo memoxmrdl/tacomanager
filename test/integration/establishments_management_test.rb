@@ -42,7 +42,6 @@ feature 'EstablishmentsManagement Feature Test' do
     testing = Establishment.create name: 'Test food', user_id: 100
 
     visit '/dashboard/establishments'
-    save_and_open_page
 
     page.must_have_selector ".establishment[data-establishment-id='#{testing.id}']", text: testing.name
   end
