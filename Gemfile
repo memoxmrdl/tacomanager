@@ -8,6 +8,7 @@ gem 'puma'
 
 group :production do
   gem 'rails_12factor'
+  gem 'newrelic_rpm'
 end
 
 gem 'paperclip', git: 'git://github.com/thoughtbot/paperclip.git', branch: 'rails-4'
