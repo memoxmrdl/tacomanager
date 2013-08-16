@@ -103,4 +103,8 @@ module ApplicationHelper
       current_identity.user.email.gsub('spam', current_identity.user.nickname),
       alt: current_identity.user.nickname, gravatar: { size: 48 })
   end
+
+  def executed_map(object)
+    object.address.latitude && onject.address.longitude
+  end
 end
