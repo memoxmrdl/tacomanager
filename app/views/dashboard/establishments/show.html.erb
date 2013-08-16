@@ -54,12 +54,15 @@
 <script type="text/javascript">
 <% params = "#{@establishment.address.latitude}, #{@establishment.address.longitude}".html_safe %>
 document.addEventListener('page:change', function(){
-  new App.Utilities.Map(<%= params %>);
-  new App.Utilities.Vote();
+  <% if executed_map @establishment %>
+    new App.Utilities.Map(<%= params %>);
+  <% end %>
+   new App.Utilities.Vote();
 });
-
 $(function(){
-  new App.Utilities.Map(<%= params %>);
+  <% if executed_map @establishment %>
+    new App.Utilities.Map(<%= params %>);
+  <% end %>
   new App.Utilities.Vote();
 });
 </script>
