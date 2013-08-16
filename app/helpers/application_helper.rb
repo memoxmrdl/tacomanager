@@ -105,6 +105,6 @@ module ApplicationHelper
   end
 
   def executed_map(object)
-    object.address.latitude && onject.address.longitude
+    object.address.latitude && object.address.longitude
   end
 end
