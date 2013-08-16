@@ -79,7 +79,8 @@ es:
         order_to: 'Realizar un pedido'
         food_empty: 'No hay ningun platillo'
         not_found: 'No se encontro el establecimiento'
-
+      destroy:
+        deleted: 'Se elimino correctamente'
     foods:
       food:
         edit: 'Editar'
