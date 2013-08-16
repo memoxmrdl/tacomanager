@@ -2,7 +2,7 @@
   <%= display_notice %>
   <%= display_alert %>
   <div class="content title-item">
-    <h3><%= @order.name %></h3>
+    <h3><%= @order.no_order %></h3>
     <div class="option">
       <ul>
         <li><%= link_to 'Invitar', new_dashboard_establishment_order_invitation_path(order_id: @order.id), id: 'invited', class: 'button' unless order_payment? %></li>

@@ -15,6 +15,10 @@ class Order < ActiveRecord::Base
     order_details.sum(:subtotal)
   end
 
+  def no_order
+    "Orden ##{self.id}"
+  end
+
   private
 
   def check_payments
