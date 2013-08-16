@@ -22,3 +22,4 @@
 
 # Ignore application configuration
 /config/database.yml
+/public/system/
