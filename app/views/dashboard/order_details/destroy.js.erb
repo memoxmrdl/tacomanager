@@ -1,8 +1,5 @@
-<% if @order_detail.destroyed? %>
-  $(".order_detail[data-orderdetail-id=<%= @order_detail.id %>]").fadeOut(500, function(){
-    $(this).remove();
-  });
-  $('#total').text("<%= number_to_currency @order.total, unit: '$' %>")
-<% else %>
-  new App.Utilities.MsgError("<%= t('.failed') %>");
-<% end %>
+$(".order_detail[data-orderdetail-id=<%= @order_detail.id %>]").fadeOut(500, function(){
+  $(this).remove();
+});
+
+$('#total').text("<%= number_to_currency @order.total, unit: '$' %>")

@@ -36,9 +36,13 @@ class Dashboard::OrderDetailsController < DashboardController
   def destroy
     @order_detail.destroy
 
-    status = @order_detail ? :ok : :bad_request
-
-    respond_with @order_detail, status: status
+    respond_to do |format|
+      if @order_detail.destroyed?
+        format.js {}
+      else
+        format.json { render json: @order_details.errors.to_json, status: :unprocessable_entity }
+      end
+    end
   end
 
   private
