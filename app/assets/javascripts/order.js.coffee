@@ -6,8 +6,9 @@ class Order
       $.post document.URL + '/order_details',
         order_details:
           food_id: food_id
-      .done (data) ->
-        console.log(data)
+      .error (errors) ->
+        for error in errors
+         new App.Utilities.MsgError(error)
       e.stopImmediatePropagation()
 
     $('.order_detail .remove').on 'click', (e) ->
@@ -31,7 +32,11 @@ class Order
       $.ajax
         url: document.URL + "/order_details/#{food_id.attr('data-orderdetail-id')}"
         type: 'PUT'
+        dataType: 'json'
         data: { order_details: { quantity: $(@).val() }}
+        statusCode:
+          422: (data) ->
+            new App.Utilities.MsgError(data.responseJSON['quantity'][0])
       e.stopImmediatePropagation()
 
     $('#status').change (e) ->

@@ -121,4 +121,8 @@ es:
             price:
               blank: 'Campo es requerido'
               not_a_number: 'Precio invalido'
-              greater_than_or_equal_to: 'Ingrese un precio real'
+              greater_than_or_equal_to: 'No es una precio correcto'
+        order_detail:
+          attributes:
+            quantity:
+              greater_than: 'Debe ser un numero mayor que 0'
