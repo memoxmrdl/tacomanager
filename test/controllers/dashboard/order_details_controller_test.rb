@@ -37,13 +37,15 @@ describe Dashboard::OrderDetailsController do
       must_render_template :update
     end
 
+    focus
     it 'should not update with invalid params' do
       login_user
 
       invalid_params = params.merge({ quantity: -2 })
       xhr :put, :update, establishment_id: 100, order_id: 100, id: order_detail.id, order_details: invalid_params
 
-      must_response_with :success
+      puts "#{response.inspect}"
+      must_response_with :unprocessable_entity
       must_render_template :update
     end
   end

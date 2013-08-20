@@ -2,6 +2,7 @@ es:
   not_have_foods: 'Orden no puede ser pagada por que no tiene pedidos'
   layouts:
     dashboard:
+      users: 'Usuarios'
       logout: 'Cerrar sesión'
       home: 'Inicio'
       new_order: 'Nuevo pedido'
@@ -13,8 +14,9 @@ es:
     users:
       update:
         updated: 'Se bloquearon algunos usuarios'
+        error: 'No se bloquearon usuarios'
       index:
-        users: 'Usuarios'
+        users: 'Bloquear usuarios'
         blocked: 'Bloquear'
     invitations:
       new:
