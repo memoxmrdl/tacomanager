@@ -1,14 +1,16 @@
 <%= display_notice %>
 <%= display_alert %>
-<div class="span5">
-  <h4><%= t('.my_establishments') %></h4>
-  <div class="establishments">
-    <%= render partial: 'establishment', collection: @establishments %>
+<div class="content">
+  <div class="span5">
+    <h4><%= t('.my_establishments') %></h4>
+    <div class="establishments">
+      <%= render partial: 'establishment', collection: @establishments %>
+    </div>
   </div>
-</div>
-<div class="span3">
-  <h4><%= t('.my_orders') %></h4>
-  <div class="orders">
-    <%= render partial: 'order', collection: @orders %>
+  <div class="span3">
+    <h4><%= t('.my_orders') %></h4>
+    <div class="orders">
+      <%= render partial: 'order', collection: @orders %>
+    </div>
   </div>
 </div>

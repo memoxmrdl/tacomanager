@@ -1,7 +1,7 @@
 $("<%= build_order_detail(@order_detail) %>")
 .hide()
 .appendTo('#order_details')
-.fadeIn('slow', function() {
+.fadeIn(200, function() {
   new App.Utilities.Order();
 });
 

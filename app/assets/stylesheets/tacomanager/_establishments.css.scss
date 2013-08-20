@@ -1,6 +1,14 @@
 .establishments {
   .title {
     margin-bottom: $margin;
+
+    h3 {
+      float: left;
+    }
+
+    a {
+      float: right;
+    }
   }
 
   .title-item {
@@ -88,8 +96,10 @@
   }
 
   #establishments {
-    height: 391px;
-    overflow-y: scroll;
+    height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-right: 20px;
     border-radius: 5px;
     background-color: #fff;
     padding: 20px;
@@ -98,6 +108,7 @@
   #foods {
     @extend #establishments;
     width: 100%;
+    height: 410px;
   }
 
   .establishment {
@@ -109,7 +120,7 @@
     border-radius: 3px;
 
     h4 {
-      font-weight: 300;
+      font-weight: 400;
       margin: 10px;
       float: left;
 

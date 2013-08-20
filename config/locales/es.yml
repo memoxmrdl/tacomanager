@@ -67,6 +67,7 @@ es:
         error: 'Surgio un error al guardar'
       index:
         establishments: 'Establecimientos'
+        create: 'Crear nuevo'
         empty: 'No hay ningun establecimiento'
       show:
         delete: 'Eliminar'

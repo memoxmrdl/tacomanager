@@ -3,7 +3,7 @@
   <%= display_alert %>
   <div class="content title">
     <h3><%= t('.establishments') %></h3>
-    <%= link_to 'Crear nuevo', new_dashboard_establishment_path, class: 'button'  %>
+    <%= link_to t('.create'), new_dashboard_establishment_path, class: 'button'  %>
   </div>
   <section id="establishments" class="content">
     <%= render @establishments or message_empty t('.empty')  %>

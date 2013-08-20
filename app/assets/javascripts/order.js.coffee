@@ -20,7 +20,6 @@ class Order
       $.ajax
         url: document.URL + "/order_details/#{id}"
         type: 'DELETE'
-        dataType: 'json'
         statusCode:
           422: (data) ->
             new App.Utilities.MsgError(data.responseJSON)
@@ -34,7 +33,6 @@ class Order
       $.ajax
         url: document.URL + "/order_details/#{id}"
         type: 'PUT'
-        dataType: 'json'
         data: { order_details: { payment: paid } }
         statusCode:
           422: (data) ->
@@ -75,7 +73,6 @@ class Order
         url: document.URL
         type: 'PUT'
         data: { order: { payment: true } }
-        dataType: 'json'
         statusCode:
           422: (data) ->
             new App.Utilities.MsgError(data.responseJSON['payment'][0])
