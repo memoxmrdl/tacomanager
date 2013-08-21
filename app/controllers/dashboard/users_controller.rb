@@ -6,9 +6,11 @@ class Dashboard::UsersController < DashboardController
   end
 
   def update
+    return redirect_to dashboard_users_path, alert: t('.error') unless params[:user_ids]
+
     params[:user_ids].each do |user|
       User.find(user).update_column(:blocked, true)
-    end if params[:user_ids]
+    end
 
     redirect_to dashboard_users_path, notice: t('.updated')
   end

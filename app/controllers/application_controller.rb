@@ -22,11 +22,11 @@ class ApplicationController < ActionController::Base
   end
 
   def current_identity
-    warden.user(scope: :authorization)
+    warden.user scope: :authorization
   end
 
   def signed_in?
-    warden.authenticate?(scope: :authorization)
+    warden.authenticate? scope: :authorization
   end
 
   def authenticate!

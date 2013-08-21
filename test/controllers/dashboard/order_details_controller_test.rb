@@ -43,8 +43,9 @@ describe Dashboard::OrderDetailsController do
       invalid_params = params.merge({ quantity: -2 })
       xhr :put, :update, establishment_id: 100, order_id: 100, id: order_detail.id, order_details: invalid_params
 
-      must_response_with :success
-      must_render_template :update
+      data = JSON.parse @response.body
+      data.size.must_equal 1
+      must_response_with :unprocessable_entity
     end
   end
 

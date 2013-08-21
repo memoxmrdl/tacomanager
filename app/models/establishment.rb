@@ -8,22 +8,19 @@ class Establishment < ActiveRecord::Base
 
   acts_as_votable
 
-  validates_uniqueness_of :name
-  validates_presence_of :name
+  validates :name, presence: true, uniqueness: true
 
   accepts_nested_attributes_for :images, allow_destroy: true
   accepts_nested_attributes_for :address
 
   scope :my_current_establishments,
-    -> (user) { where(user: user).order('created_at DESC') }
+    -> (user) { where(user: user) }
 
-  class << self
-    def is_mine?(id, user)
-      begin
-        where(user_id: user.id).find(id)
-      rescue ActiveRecord::RecordNotFound
-        nil
-      end
+  def self.is_mine?(id, user)
+    begin
+      where(user_id: user.id).find(id)
+    rescue ActiveRecord::RecordNotFound
+      nil
     end
   end
 

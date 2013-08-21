@@ -2,6 +2,7 @@ es:
   not_have_foods: 'Orden no puede ser pagada por que no tiene pedidos'
   layouts:
     dashboard:
+      users: 'Usuarios'
       logout: 'Cerrar sesión'
       home: 'Inicio'
       new_order: 'Nuevo pedido'
@@ -13,8 +14,9 @@ es:
     users:
       update:
         updated: 'Se bloquearon algunos usuarios'
+        error: 'No se bloquearon usuarios'
       index:
-        users: 'Usuarios'
+        users: 'Bloquear usuarios'
         blocked: 'Bloquear'
     invitations:
       new:
@@ -67,6 +69,7 @@ es:
         error: 'Surgio un error al guardar'
       index:
         establishments: 'Establecimientos'
+        create: 'Crear nuevo'
         empty: 'No hay ningun establecimiento'
       show:
         delete: 'Eliminar'
@@ -121,4 +124,8 @@ es:
             price:
               blank: 'Campo es requerido'
               not_a_number: 'Precio invalido'
-              greater_than_or_equal_to: 'Ingrese un precio real'
+              greater_than_or_equal_to: 'No es una precio correcto'
+        order_detail:
+          attributes:
+            quantity:
+              greater_than: 'Debe ser un numero mayor que 0'

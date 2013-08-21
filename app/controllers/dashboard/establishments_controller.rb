@@ -1,6 +1,8 @@
 class Dashboard::EstablishmentsController < DashboardController
-  before_filter :establishment_find_by_id, only: :show
+  before_filter :establishment_find_by_id, only: [:show, :destroy]
   before_filter :is_mine?, only: [:edit, :update]
+  before_filter :is_admin?, only: :destroy
+  before_filter :prepare, only: :show
 
   def index
     @establishments = Establishment.all
@@ -11,29 +13,21 @@ class Dashboard::EstablishmentsController < DashboardController
     @establishment.build_address
   end
 
-  def show
-    return redirect_to dashboard_establishments_path, alert: t('.not_found') unless @establishment
-
-    @order = Order.new
-    @foods = Food.where(establishment_id: params[:id])
-    @comment = Comment.new
-  end
+  def show; end
 
   def create
-    @establishment = Establishment.new params_establishment
+    @establishment = current_identity.user
+      .establishments
+      .create(params_establishment)
     @establishment.build_address params_address
-    @establishment.user = current_identity.user
 
-    if @establishment.save
-      return redirect_to dashboard_establishments_path, notice: t('.created')
-    end
+    return redirect_to dashboard_establishments_path, notice: t('.created') if @establishment.save
 
     flash.now[:alert] = t('.error')
     render :new
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @establishment
@@ -49,17 +43,23 @@ class Dashboard::EstablishmentsController < DashboardController
   end
 
   def destroy
-    return redirect_to dashboard_establishments_path, alert: t('.not_permision') unless current_identity.user.admin?
-
-    @establishment = Establishment.find_by_id params[:id]
     deleted = @establishment.destroy if @establishment
-
     message = redirect_message @establishment, deleted, t('.deleted')
 
     redirect_to dashboard_establishments_path, message
   end
 
   private
+
+  def prepare
+    @order = Order.new
+    @comment = Comment.new
+    @foods = Food.where(establishment_id: params[:id])
+  end
+
+  def is_admin?
+    return redirect_to dashboard_establishments_path, alert: t('.not_permision') unless current_identity.user.admin? 
+  end
 
   def is_mine?
     @establishment = Establishment.is_mine? params[:id], current_identity.user
@@ -69,6 +69,8 @@ class Dashboard::EstablishmentsController < DashboardController
 
   def establishment_find_by_id
     @establishment = Establishment.find_by_id params[:id]
+
+    return redirect_to dashboard_establishments_path, alert: t('.not_found') unless @establishment
   end
 
   def params_address

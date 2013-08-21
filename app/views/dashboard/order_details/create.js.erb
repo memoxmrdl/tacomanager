@@ -1,11 +1,8 @@
-<% if @order_detail %>
- $("<%= build_order_detail(@order_detail) %>")
-  .hide()
-  .appendTo('#order_details')
-  .fadeIn('slow', function() {
-    new App.Utilities.Order();
-  });
-  $('#total').text("<%= number_to_currency @order.total, unit: '$' %>")
-<% else %>
-  new App.Utilities.MsgError("<%= t('.failed') %>");
-<% end %>
+$("<%= build_order_detail(@order_detail) %>")
+.hide()
+.appendTo('#order_details')
+.fadeIn(200, function() {
+  new App.Utilities.Order();
+});
+
+$('#total').text("<%= number_to_currency @order.total, unit: '$' %>")
