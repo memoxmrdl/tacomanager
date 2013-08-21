@@ -1,4 +1,9 @@
 .establishments {
+
+  .content {
+    height: auto !important;
+  }
+
   .title {
     margin-bottom: $margin;
 
@@ -205,10 +210,6 @@
 
     }
 
-    .clearfix {
-      clear: both;
-      float: left;
-    }
   }
 
 }
