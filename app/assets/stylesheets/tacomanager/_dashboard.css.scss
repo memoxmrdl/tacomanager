@@ -124,11 +124,35 @@ header {
 }
 
 footer {
-  height: 50px;
+  @extend .container;
+  height: 150px;
   color: #AD4D17;
-  margin-left: 160px;
   font-size: .7em;
   font-style: italic;
+
+  .circles {
+    background: image-url('circles.jpg') no-repeat;
+    width: 113px;
+    height: 30px;
+    position: absolute;
+    margin-left: ($margin * 2);
+  }
+
+  .text-description {
+    margin-left: 170px;
+    font-weight: bold;
+    margin-top: 5px;
+    color: #AD4D17;
+  }
+
+  .bottom-logo {
+    background: image-url('bottom-logo.png') no-repeat;
+    width: 235px;
+    height: 105px;
+    position: relative;
+    float: right;
+    margin-top: -20px;
+  }
 }
 
 .message-empty {

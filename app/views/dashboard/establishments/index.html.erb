@@ -9,3 +9,12 @@
     <%= render @establishments or message_empty t('.empty')  %>
   </section>
 </section>
+<script type="text/javascript" charset="utf-8">
+document.addEventListener('page:change', function() {
+  new App.Utilities.Masonry('#establishments', '.establishment', 230);
+})
+
+$(function(){
+  new App.Utilities.Masonry('#establishments', '.establishment', 230);
+});
+</script>
