@@ -1,37 +1,37 @@
 .home {
-.flannel {
-  background: image-url('flannel.png') no-repeat;
-  margin: 0 auto;
-  width: 978px;
-  height: 443px;
-  margin-top: -90px;
-  position: absolute;
-}
-
-.logo {
-  background: image-url('logo.png') no-repeat;
-  margin-top: 80px;
-  width: 498px;
-  height: 364px;
-}
-
-.provider {
-  margin-top: 260px;
-  margin-left: 570px;
-
-  h2 {
-    margin-bottom: ($margin / 2)
+  .flannel {
+    background: image-url('flannel.png') no-repeat;
+    margin: 0 auto;
+    width: 978px;
+    height: 443px;
+    margin-top: -90px;
+    position: absolute;
   }
 
-  .providers {
-    margin-left: ($margin*2);
+  .logo {
+    background: image-url('logo.png') no-repeat;
+    margin-top: 80px;
+    width: 498px;
+    height: 364px;
   }
-}
 
-.footer {
-  color: #AD4D17;
-  margin-left: ($margin * 8);
-  font-size: .7em;
-  font-style: italic;
-}
+  .provider {
+    margin-top: 260px;
+    margin-left: 570px;
+
+    h2 {
+      margin-bottom: ($margin / 2)
+    }
+
+    .providers {
+      margin-left: ($margin*2);
+    }
+  }
+
+  .footer {
+    color: #AD4D17;
+    margin-left: ($margin * 8);
+    font-size: .7em;
+    font-style: italic;
+  }
 }
