@@ -35,7 +35,7 @@
     <div class="gallery">
       <div id="thumbs">
         <% @establishment.images.each do |item| %>
-          <%= image_tag item.image.url(:thumb) %>
+          <%= image_tag item.image.url(:thumb), class: 'thumb' %>
         <% end %>
       </div>
     </div>
@@ -57,12 +57,14 @@ document.addEventListener('page:change', function(){
   <% if executed_map @establishment %>
     new App.Utilities.Map(<%= params %>);
   <% end %>
-   new App.Utilities.Vote();
+  new App.Utilities.Vote();
+  new App.Utilities.Masonry('#thumbs', '.thumb', 200);
 });
 $(function(){
   <% if executed_map @establishment %>
     new App.Utilities.Map(<%= params %>);
   <% end %>
   new App.Utilities.Vote();
+  new App.Utilities.Masonry('#thumbs', '.thumb', 200);
 });
 </script>

@@ -25,33 +25,6 @@ describe Dashboard::FoodsController do
     end
   end
 
-  describe 'GET show' do
-    it 'should display food that a establishment when for logged user' do
-      login_user
-
-      get :show, establishment_id: establishment.id, id: food.id
-
-      must_response_with :success
-      must_render_template :show
-    end
-
-    it 'should redirect when not logged user' do
-      get :show, establishment_id: establishment.id, id: food.id
-
-      must_redirect_to root_path
-      flash[:alert].wont_be_nil
-    end
-
-    it 'should redirect when not exists' do
-      login_user
-
-      get :show, establishment_id: 203, id: 300
-
-      must_redirect_to dashboard_establishment_foods_path
-      flash[:alert].wont_be_nil
-    end
-  end
-
   describe 'GET new' do
     it 'should render new when logged user' do
       login_user
@@ -85,7 +58,7 @@ describe Dashboard::FoodsController do
 
       post :create, establishment_id: 300, food: params
 
-      must_redirect_to dashboard_establishment_foods_path
+      must_redirect_to dashboard_establishments_path
       flash[:alert].wont_be_nil
     end
 
@@ -113,10 +86,10 @@ describe Dashboard::FoodsController do
     it 'should render edit when not exists' do
       login_user
 
-      get :edit, establishment_id: 300, id: 200
+      get :edit, establishment_id: establishment.id, id: 400
 
-      must_redirect_to dashboard_establishment_foods_path
-      flash[:alert].wont_be_nil
+      must_redirect_to dashboard_establishment_path(id: establishment.id)
+      flash[:notice].wont_be_nil
     end
 
     it 'should redirect when not logged user' do

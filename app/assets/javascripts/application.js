@@ -1,7 +1,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require jquery.carouFredSel
 //= require app
 //= require dashboard
 //= require map
@@ -9,4 +8,5 @@
 //= require order
 //= require msgerror
 //= require vote
-
+//= require masonry.min
+//= require masonry

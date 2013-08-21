@@ -107,4 +107,10 @@ module ApplicationHelper
   def executed_map(object)
     object.address.latitude && object.address.longitude
   end
+
+  def display_users_when_is_admin?
+    content_tag :li do
+      link_to t('.users'), dashboard_users_path
+    end if current_identity.user.admin?
+  end
 end

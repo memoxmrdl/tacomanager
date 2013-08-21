@@ -2,10 +2,11 @@ header {
   height: 68px;
 
   .menu {
-    margin-left: 0;
+    margin-left: 0 !important;
+
     ul {
-      padding-left: 0px;
-      font-size: 1em;
+      padding-left: 5px;
+      font-size: .9em;
       font-weight: 400;
       list-style-type: none;
       margin-top: $margin;
@@ -27,6 +28,7 @@ header {
     }
 
     a {
+      display: inline-block;
       text-decoration: none;
     }
   }
@@ -44,14 +46,15 @@ header {
     margin-top: 10px;
 
   }
-    .logout {
-      font-size: .8em;
-      position: absolute;
-      margin-top: 22px;
-      margin-left: 10px;
-      font-weight: 300px;
-    }
-    
+
+  .logout {
+    font-size: .8em;
+    position: absolute;
+    margin-top: 22px;
+    margin-left: 10px;
+    font-weight: 300px;
+  }
+
 }
 
 .bar-dashboard {
@@ -76,12 +79,14 @@ header {
       padding: 15px;
       width: 100%;
       background-color: #fff;
-      height: 350px;
+      height: 300px;
       border-radius: 5px;
-      overflow-y: scroll;
+      overflow-y: auto;
+      overflow-x: hidden;
 
       .establishment {
         width: 369px;
+        font-size: .9em;
       }
 
       .order {
@@ -119,9 +124,39 @@ header {
 }
 
 footer {
-  height: 50px;
+  @extend .container;
+  height: 150px;
   color: #AD4D17;
-  margin-left: 160px;
   font-size: .7em;
   font-style: italic;
+
+  .circles {
+    background: image-url('circles.jpg') no-repeat;
+    width: 113px;
+    height: 30px;
+    position: absolute;
+    margin-left: ($margin * 2);
+  }
+
+  .text-description {
+    margin-left: 170px;
+    font-weight: bold;
+    margin-top: 5px;
+    color: #AD4D17;
+  }
+
+  .bottom-logo {
+    background: image-url('bottom-logo.png') no-repeat;
+    width: 235px;
+    height: 105px;
+    position: relative;
+    float: right;
+    margin-top: -20px;
+  }
+}
+
+.message-empty {
+  font-size: 1.3em;
+  color: #ddd;
+  font-weight: 300;
 }

@@ -3,9 +3,18 @@
   <%= display_alert %>
   <div class="content title">
     <h3><%= t('.establishments') %></h3>
-    <%= link_to 'Crear nuevo', new_dashboard_establishment_path, class: 'button'  %>
+    <%= link_to t('.create'), new_dashboard_establishment_path, class: 'button'  %>
   </div>
   <section id="establishments" class="content">
     <%= render @establishments or message_empty t('.empty')  %>
   </section>
 </section>
+<script type="text/javascript" charset="utf-8">
+document.addEventListener('page:change', function() {
+  new App.Utilities.Masonry('#establishments', '.establishment', 230);
+})
+
+$(function(){
+  new App.Utilities.Masonry('#establishments', '.establishment', 230);
+});
+</script>
