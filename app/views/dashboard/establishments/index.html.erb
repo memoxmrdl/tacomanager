@@ -5,16 +5,15 @@
     <h3><%= t('.establishments') %></h3>
     <%= link_to t('.create'), new_dashboard_establishment_path, class: 'button'  %>
   </div>
-  <section id="establishments" class="content">
+  <section class="group-establishments" id="establishments" class="content">
     <%= render @establishments or message_empty t('.empty')  %>
   </section>
 </section>
 <script type="text/javascript" charset="utf-8">
-document.addEventListener('page:change', function() {
-  new App.Utilities.Masonry('#establishments', '.establishment', 230);
-})
-
 $(function(){
-  new App.Utilities.Masonry('#establishments', '.establishment', 230);
+  $('.group-establishments').masonry({
+    itemSelector: '.establishment',
+    columnWith: 240
+  });
 });
 </script>

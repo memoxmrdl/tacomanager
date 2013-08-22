@@ -1,3 +1,7 @@
 <div class="establishment" data-establishment-id="<%= "#{establishment.id}" %>">
+  <div class="food"></div>
   <h4><%= link_to establishment.name, dashboard_establishment_path(id: establishment.id) %></h4>
+  <div class="description">
+    Platillos: <%= establishment.foods.size %>
+  </div>
 </div>

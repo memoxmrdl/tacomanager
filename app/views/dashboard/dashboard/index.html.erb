@@ -3,13 +3,13 @@
 <div class="content">
   <div class="span5">
     <h4><%= t('.my_establishments') %></h4>
-    <div class="establishments">
+    <div class="list-establishments">
       <%= render partial: 'establishment', collection: @establishments %>
     </div>
   </div>
   <div class="span3">
     <h4><%= t('.my_orders') %></h4>
-    <div class="orders">
+    <div class="list-orders">
       <%= render partial: 'order', collection: @orders %>
     </div>
   </div>
