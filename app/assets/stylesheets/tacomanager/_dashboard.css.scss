@@ -75,7 +75,7 @@ header {
       font-size: 1.2em;
     }
 
-    .establishments, .orders {
+    .list-establishments, .list-orders {
       padding: 15px;
       width: 100%;
       background-color: #fff;
@@ -83,34 +83,43 @@ header {
       border-radius: 5px;
       overflow-y: auto;
       overflow-x: hidden;
+    }
 
+    .list-establishments {
       .establishment {
-        width: 369px;
-        font-size: .9em;
-      }
-
-      .order {
-        float: left;
-        width: 197px;
-        background-color: #eee;
-        margin-right: 10px;
-        margin-bottom: 10px;
+        width: 360px;
+        background: #eee;
+        margin: 0 10px 10px 0;
+        padding: 10px;
         border-radius: 3px;
 
-        .not-payment {
-          color: blue;
-        }
+        h4 {
+          margin: 0;
+          font-size: 1em;
+          font-weight: 200;
 
-        .payment {
-          color: #000;
+          a {
+            text-decoration: none;
+          }
         }
+      }
+    }
+
+    .list-orders {
+      .order {
+        width: 190px;
+        background: #eee;
+        padding: 10px;
+        border-radius: 3px;
 
         h4 {
+          margin: 0;
           font-size: 1em;
-          font-weight: 300;
-          margin: 10px;
+          font-weight: 200;
 
-          a { text-decoration: none }
+          a {
+            text-decoration: none;
+          }
         }
       }
     }

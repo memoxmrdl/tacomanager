@@ -98,10 +98,12 @@
   }
 
   #establishments {
-    height: 503px !important;
+    @include shadow(10px, 10px, #ccc);
+    height: 450px !important;
     overflow-y: auto;
     overflow-x: hidden;
     margin-right: 20px;
+    margin-bottom: 20px;
     border-radius: 5px;
     background-color: #fff;
     padding: 20px;
@@ -114,17 +116,31 @@
   }
 
   .establishment {
+    @include shadow(5px, 5px, #ddd);
     float: left;
-    width: 230px;
     background-color: #eee;
-    margin-right: 10px;
-    margin-bottom: 10px;
     border-radius: 3px;
+    margin: 10px;
+    width: 240px;
+
+    .food {
+      background: image-url('food.png') no-repeat;
+      width: 48px;
+      height: 48px;
+      margin: 10px;
+    }
+
+    .description {
+      float: right;
+      margin: 10px;
+      font-size: .7em;
+    }
 
     h4 {
       font-weight: 400;
-      margin: 10px;
+      margin: 10px 10px 10px 0;
       float: left;
+      width: 152px;
 
       a {
         text-decoration: none;

@@ -18,3 +18,9 @@
   background: -ms-linear-background($size, $color1, $color2);
   background: linear-background($size, $color1, $color2);
 }
+
+@mixin shadow($x, $y, $color) {
+  -moz-box-shadow: $x $y $color;
+  -webkit-box-shadow: $x $y $color;
+  box-shadow: $x $y $color;
+}
